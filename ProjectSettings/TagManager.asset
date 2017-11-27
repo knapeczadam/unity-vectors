@@ -3,7 +3,11 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Player2D
+  - Player3D
+  - Enemy2D
+  - Enemy3D
   layers:
   - Default
   - TransparentFX
