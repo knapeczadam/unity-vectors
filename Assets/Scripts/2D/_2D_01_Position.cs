@@ -6,8 +6,9 @@ using UnityEngine;
 public class _2D_01_Position : MonoBehaviour
 {
 
-	[Header("Player")] 
 	private GameObject _player;
+	
+	[Header("Player")]
 	public float player_x;
 	public float player_y;
 
