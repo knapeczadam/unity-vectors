@@ -26,7 +26,7 @@ public class _2D_01_Position : MonoBehaviour
 	void Update ()
 	{
 		/*
-		 * Q: Should I use Translate instead of position?
+		 * Q: Should I use Translate() instead of transform.position = new Vector?
 		 * _player.transform.Translate(new Vector3(player_x, 0, player_y));
 		 *
 		 * Q: What's the meaning of using Time.deltaTime?

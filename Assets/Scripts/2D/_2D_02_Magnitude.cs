@@ -40,9 +40,7 @@ public class _2D_02_Magnitude : MonoBehaviour {
 		 * Q: When do we use sqrMagnitude over magnitude?
 		 */
 		
-		Debug.DrawLine(_zero, new Vector3(player_x, 0, player_y), Color.cyan);
-		Debug.DrawLine(_zero, new Vector3(player_x, 0, 0), Color.red);
-		Debug.DrawLine(new Vector3(player_x, 0, 0), new Vector3(player_x, 0, player_y), Color.green);
+		Draw();
 	}
 	
 	private float Magnitude()
@@ -53,5 +51,12 @@ public class _2D_02_Magnitude : MonoBehaviour {
 	private float SqrMagnitude()
 	{
 			return player_x * player_x + player_y * player_y;
+	}
+
+	private void Draw()
+	{
+		Debug.DrawLine(_zero, new Vector3(player_x, 0, player_y), Color.cyan);
+		Debug.DrawLine(_zero, new Vector3(player_x, 0, 0), Color.red);
+		Debug.DrawLine(new Vector3(player_x, 0, 0), new Vector3(player_x, 0, player_y), Color.green);
 	}
 }
