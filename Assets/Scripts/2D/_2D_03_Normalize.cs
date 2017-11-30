@@ -33,7 +33,7 @@ public class _2D_03_Normalize : MonoBehaviour {
 		_player.transform.position = new Vector3(player_x, 0, player_y);
 		
 		/*
-		 * Q: Difference between transform.position.normalized and transform.position.Normalize()
+		 * Q: Difference between transform.position.normalized and transform.position.Normalize()?
 		 */
 		Normalize();
 		

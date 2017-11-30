@@ -35,4 +35,21 @@ public class _2D_01_Position : MonoBehaviour
 		_player.transform.position = new Vector3(player_x, 0, player_y);
 
 	}
+
+	private Vector3 Alternative_1()
+	{
+		Vector3 position = new Vector3();
+		position.x = player_x;
+		position.z = player_y;
+
+		return position;
+	}
+
+	private Vector3 Alternative_2()
+	{
+		Vector3 position = new Vector3();
+		position.Set(player_x, 0, player_y);
+
+		return position;
+	}
 }
