@@ -30,9 +30,9 @@ public class _2D_01_Position : MonoBehaviour
 		 * Q: Should I use Translate() instead of transform.position = PlayerPosition?
 		 * _player.transform.Translate(PlayerPosition);
 		 *
-		 * Q: What's the meaning of using Time.deltaTime?
-		 * _player.transform.Translate(PlayerPosition * Time.deltaTime);
-		 */
+		 * Q: What is Time.deltaTime?
+//		 * _player.transform.Translate(PlayerPosition * Time.deltaTime);
+		 */	
 		_player.transform.position = PlayerPosition;
 //		_player.transform.position = CreatePosition1();
 //		_player.transform.position = CreatePosition2();

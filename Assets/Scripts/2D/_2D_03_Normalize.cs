@@ -38,6 +38,8 @@ public class _2D_03_Normalize : MonoBehaviour {
 		Normalize();
 		
 		/*
+		 * Q: What is unit vector?
+		 * 
 		 * Q: Magnitude of a normalized vector is always between 0 and 1. True or false?
 		 */
 		NormalizedMagnitude = new Vector2(NormalizedX, NormalizedY).magnitude;
