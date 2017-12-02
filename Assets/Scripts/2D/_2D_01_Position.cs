@@ -9,8 +9,9 @@ public class _2D_01_Position : MonoBehaviour
 	private GameObject _player;
 	
 	[Header("Player")]
-	public float player_x;
-	public float player_y;
+	public Vector2 PlayerPosition;
+	public float PlayerX;
+	public float PlayerY;
 
 	private void OnEnable()
 	{
@@ -26,29 +27,39 @@ public class _2D_01_Position : MonoBehaviour
 	void Update ()
 	{
 		/*
-		 * Q: Should I use Translate() instead of transform.position = new Vector?
-		 * _player.transform.Translate(new Vector3(player_x, 0, player_y));
+		 * Q: Should I use Translate() instead of transform.position = PlayerPosition?
+		 * _player.transform.Translate(PlayerPosition);
 		 *
 		 * Q: What's the meaning of using Time.deltaTime?
-		 * _player.transform.Translate(new Vector3(player_x, 0, player_y) * Time.deltaTime);
+		 * _player.transform.Translate(PlayerPosition * Time.deltaTime);
 		 */
-		_player.transform.position = new Vector3(player_x, 0, player_y);
+		_player.transform.position = PlayerPosition;
+//		_player.transform.position = CreatePosition1();
+//		_player.transform.position = CreatePosition2();
+//		_player.transform.position = CreatePosition3();
 
 	}
 
-	private Vector3 Alternative_1()
+	private Vector2 CreatePosition1()
 	{
-		Vector3 position = new Vector3();
-		position.x = player_x;
-		position.z = player_y;
+		Vector2 position = new Vector2(PlayerX, PlayerY);
 
 		return position;
 	}
 
-	private Vector3 Alternative_2()
+	private Vector2 CreatePosition2()
 	{
-		Vector3 position = new Vector3();
-		position.Set(player_x, 0, player_y);
+		Vector2 position = new Vector2();
+		position.Set(PlayerX, PlayerY);
+
+		return position;
+	}
+
+	private Vector2 CreatePosition3()
+	{
+		Vector2 position = new Vector2();
+		position.x = PlayerX;
+		position.y = PlayerY;
 
 		return position;
 	}

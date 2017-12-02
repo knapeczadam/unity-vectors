@@ -8,15 +8,15 @@ public class _2D_03_Normalize : MonoBehaviour {
 	private GameObject _player;
 	
 	[Header("Player")]
-	public float player_x;
-	public float player_y;
+	public float PlayerX;
+	public float PlayerY;
 
 	[Header("Normalize")] 
-	public float normalized_x;
-	public float normalized_y;
-	public float normalized_magnitude;
+	public float NormalizedX;
+	public float NormalizedY;
+	public float NormalizedMagnitude;
 
-	private Vector3 _zero = Vector3.zero;
+	private readonly Vector2 _zero = Vector2.zero;
 
 	private void OnEnable()
 	{
@@ -30,7 +30,7 @@ public class _2D_03_Normalize : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		_player.transform.position = new Vector3(player_x, 0, player_y);
+		_player.transform.position = new Vector2(PlayerX, PlayerY);
 		
 		/*
 		 * Q: Difference between transform.position.normalized and transform.position.Normalize()?
@@ -38,9 +38,9 @@ public class _2D_03_Normalize : MonoBehaviour {
 		Normalize();
 		
 		/*
-		 * Q: Magnitude of a normalzied vector is always between 0 and 1. True or false?
+		 * Q: Magnitude of a normalized vector is always between 0 and 1. True or false?
 		 */
-		normalized_magnitude = new Vector3(normalized_x, 0, normalized_y).magnitude;
+		NormalizedMagnitude = new Vector2(NormalizedX, NormalizedY).magnitude;
 		
 		Draw();
 	}
@@ -51,13 +51,13 @@ public class _2D_03_Normalize : MonoBehaviour {
 		 * Q: When do we use a normalized vector?
 		 */
 		float length = _player.transform.position.magnitude;
-		normalized_x = player_x / length;
-		normalized_y = player_y / length;
+		NormalizedX = PlayerX / length;
+		NormalizedY = PlayerY / length;
 	}
 
 	private void Draw()
 	{
-		Debug.DrawLine(_zero, new Vector3(player_x, 0, player_y), Color.cyan);
+		Debug.DrawLine(_zero, new Vector2(PlayerX, PlayerY), Color.cyan);
 		Debug.DrawLine(_zero, _player.transform.position.normalized, Color.magenta);
 	}
 }

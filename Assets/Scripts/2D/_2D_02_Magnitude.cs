@@ -8,12 +8,12 @@ public class _2D_02_Magnitude : MonoBehaviour {
 	private GameObject _player;
 	
 	[Header("Player")]
-	public float player_x;
-	public float player_y;
-	public float magnitude;
-	public float sqrMagnitude;
+	public float PlayerX;
+	public float PlayerY;
+	public float Magnitude;
+	public float SqrMagnitude;
 	
-	private Vector3 _zero = Vector3.zero;
+	private readonly Vector2 _zero = Vector2.zero;
 
 	private void OnEnable()
 	{
@@ -27,15 +27,15 @@ public class _2D_02_Magnitude : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		_player.transform.position = new Vector3(player_x, 0, player_y);
+		_player.transform.position = new Vector2(PlayerX, PlayerY);
 		/*
 		 * Q: What's the alternative of Magnitude()?
 		 */
-		magnitude = Magnitude();
+		Magnitude = CalculateMagnitude();
 		/*
 		 * Q: What's the alternative of SqrMagnitude()?
 		 */
-		sqrMagnitude = SqrMagnitude();
+		SqrMagnitude = CalculateSqrMagnitude();
 		/*
 		 * Q: When do we use sqrMagnitude over magnitude?
 		 */
@@ -43,20 +43,20 @@ public class _2D_02_Magnitude : MonoBehaviour {
 		Draw();
 	}
 	
-	private float Magnitude()
+	private float CalculateMagnitude()
 	{
-		return Mathf.Sqrt(player_x * player_x + player_y * player_y);
+		return Mathf.Sqrt(PlayerX * PlayerX + PlayerY * PlayerY);
 	}
 
-	private float SqrMagnitude()
+	private float CalculateSqrMagnitude()
 	{
-			return player_x * player_x + player_y * player_y;
+			return PlayerX * PlayerX + PlayerY * PlayerY;
 	}
 
 	private void Draw()
 	{
-		Debug.DrawLine(_zero, new Vector3(player_x, 0, player_y), Color.cyan);
-		Debug.DrawLine(_zero, new Vector3(player_x, 0, 0), Color.red);
-		Debug.DrawLine(new Vector3(player_x, 0, 0), new Vector3(player_x, 0, player_y), Color.green);
+		Debug.DrawLine(_zero, new Vector2(PlayerX, PlayerY), Color.cyan);
+		Debug.DrawLine(_zero, new Vector2(PlayerX, 0), Color.red);
+		Debug.DrawLine(new Vector2(PlayerX, 0), new Vector2(PlayerX, PlayerY), Color.green);
 	}
 }

@@ -8,18 +8,18 @@ public class _2D_04_Add : MonoBehaviour {
 	private GameObject _player;
 	
 	[Header("Player")]
-	public float player_x;
-	public float player_y;
+	public float PlayerX;
+	public float PlayerY;
 
 	[Header("Light side")] 
-	public float light_x;
-	public float light_y;
+	public float LightX;
+	public float LightY;
 
 	[Header("Dark side")] 
-	public float dark_x;
-	public float dark_y;
+	public float DarkX;
+	public float DarkY;
 	
-	private Vector3 _zero = Vector3.zero;
+	private readonly Vector2 _zero = Vector2.zero;
 	
 	private void OnEnable()
 	{
@@ -34,7 +34,7 @@ public class _2D_04_Add : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		Add();
-		_player.transform.position = new Vector3(player_x, 0, player_y);
+		_player.transform.position = new Vector2(PlayerX,PlayerY);
 		Draw();
 	}
 
@@ -45,14 +45,14 @@ public class _2D_04_Add : MonoBehaviour {
 		 *
 		 * Q: Is vector addition commutative?
 		 */
-		player_x = light_x + dark_x;
-		player_y = light_y + dark_y;
+		PlayerX = LightX + DarkX;
+		PlayerY = LightY + DarkY;
 	}
 	
 	private void Draw()
 	{
-		Debug.DrawLine(_zero, new Vector3(light_x, 0, light_y), Color.green);
-		Debug.DrawLine(_zero, new Vector3(dark_x, 0, dark_y), Color.red);
-		Debug.DrawLine(_zero, new Vector3(player_x, 0, player_y), Color.cyan);
+		Debug.DrawLine(_zero, new Vector2(LightX, LightY), Color.green);
+		Debug.DrawLine(_zero, new Vector2(DarkX, DarkY), Color.red);
+		Debug.DrawLine(_zero, new Vector2(PlayerX, PlayerY), Color.cyan);
 	}
 }

@@ -151,6 +151,22 @@ Prefab:
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4153486501359200, guid: 47bc02f0ad10a594f87ec14a22b4b23a, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4153486501359200, guid: 47bc02f0ad10a594f87ec14a22b4b23a, type: 2}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4153486501359200, guid: 47bc02f0ad10a594f87ec14a22b4b23a, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4153486501359200, guid: 47bc02f0ad10a594f87ec14a22b4b23a, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 47bc02f0ad10a594f87ec14a22b4b23a, type: 2}
   m_IsPrefabParent: 0
@@ -212,11 +228,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6bda85d5a6638eb419fa136467410ca5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player_x: 10
-  player_y: 0
-  normalized_x: 1
-  normalized_y: 0
-  normalized_magnitude: 1
+  PlayerX: 10
+  PlayerY: 0
+  NormalizedX: 1
+  NormalizedY: 0
+  NormalizedMagnitude: 1
 --- !u!1001 &2142039473
 Prefab:
   m_ObjectHideFlags: 0
