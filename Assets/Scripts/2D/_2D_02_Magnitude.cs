@@ -11,7 +11,6 @@ public class _2D_02_Magnitude : MonoBehaviour {
 	public float PlayerX;
 	public float PlayerY;
 	public float Magnitude;
-	public float SqrMagnitude;
 	
 	private readonly Vector2 _zero = Vector2.zero;
 
@@ -29,28 +28,20 @@ public class _2D_02_Magnitude : MonoBehaviour {
 	void Update () {
 		_player.transform.position = new Vector2(PlayerX, PlayerY);
 		/*
-		 * Q: What's the alternative of Magnitude()?
+		 * Q: What's the alternative of CalculateMagnitude()?
 		 */
 		Magnitude = CalculateMagnitude();
-		/*
-		 * Q: What's the alternative of SqrMagnitude()?
-		 */
-		SqrMagnitude = CalculateSqrMagnitude();
-		/*
-		 * Q: When do we use sqrMagnitude over magnitude?
-		 */
 		
 		Draw();
 	}
 	
 	private float CalculateMagnitude()
 	{
+		/*
+		 * Pythagorean theorem
+		 * a * a + b * b = c * c
+		 */
 		return Mathf.Sqrt(PlayerX * PlayerX + PlayerY * PlayerY);
-	}
-
-	private float CalculateSqrMagnitude()
-	{
-			return PlayerX * PlayerX + PlayerY * PlayerY;
 	}
 
 	private void Draw()
