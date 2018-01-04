@@ -88,6 +88,7 @@ LightmapSettings:
     m_PVRFilteringAtrousPositionSigmaDirect: 0.5
     m_PVRFilteringAtrousPositionSigmaIndirect: 2
     m_PVRFilteringAtrousPositionSigmaAO: 1
+    m_ShowResolutionOverlay: 1
   m_LightingDataAsset: {fileID: 0}
   m_UseShadowmask: 1
 --- !u!196 &4
@@ -216,7 +217,11 @@ MonoBehaviour:
   PlayerY: 10
   EnemyX: -10
   EnemyY: 10
+  CalculationX: -10 - (10) = -20
+  CalculationY: 10 - (10) = 0
   Distance: 20
+  reversed: 0
+  YouAreThe: Player
 --- !u!1001 &1160658547
 Prefab:
   m_ObjectHideFlags: 0

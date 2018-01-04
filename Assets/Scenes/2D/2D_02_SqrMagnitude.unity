@@ -88,6 +88,7 @@ LightmapSettings:
     m_PVRFilteringAtrousPositionSigmaDirect: 0.5
     m_PVRFilteringAtrousPositionSigmaIndirect: 2
     m_PVRFilteringAtrousPositionSigmaAO: 1
+    m_ShowResolutionOverlay: 1
   m_LightingDataAsset: {fileID: 0}
   m_UseShadowmask: 1
 --- !u!196 &4
@@ -170,10 +171,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f0732baffb6f759469a89330b1fc3a27, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PlayerPosition: {x: 0, y: 0}
-  PlayerSqrMagnitude: 0
-  EnemyPosition: {x: 0, y: 0}
-  EnemySqrMagnitude: 0
+  PlayerPosition: {x: 10, y: 0}
+  PlayerSqrMagnitude: 100
+  EnemyPosition: {x: -10, y: 0}
+  EnemySqrMagnitude: 100
   text: Equal
 --- !u!1001 &1048906256
 Prefab:
@@ -226,7 +227,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4153486501359200, guid: 47bc02f0ad10a594f87ec14a22b4b23a, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 4153486501359200, guid: 47bc02f0ad10a594f87ec14a22b4b23a, type: 2}
       propertyPath: m_LocalPosition.y
@@ -254,7 +255,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4153486501359200, guid: 47bc02f0ad10a594f87ec14a22b4b23a, type: 2}
       propertyPath: m_RootOrder
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 47bc02f0ad10a594f87ec14a22b4b23a, type: 2}
@@ -268,7 +269,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4287571175797562, guid: 2a25dd98c46bb8a448e399a641efcd4b, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -10
       objectReference: {fileID: 0}
     - target: {fileID: 4287571175797562, guid: 2a25dd98c46bb8a448e399a641efcd4b, type: 2}
       propertyPath: m_LocalPosition.y
@@ -296,7 +297,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4287571175797562, guid: 2a25dd98c46bb8a448e399a641efcd4b, type: 2}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 2a25dd98c46bb8a448e399a641efcd4b, type: 2}

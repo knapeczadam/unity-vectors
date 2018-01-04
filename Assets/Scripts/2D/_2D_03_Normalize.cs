@@ -53,6 +53,10 @@ public class _2D_03_Normalize : MonoBehaviour {
 		 * Q: When do we use a normalized vector?
 		 */
 		float length = _player.transform.position.magnitude;
+		
+		/*
+		 * Q: Is everything ok with this division?
+		 */
 		NormalizedX = PlayerX / length;
 		NormalizedY = PlayerY / length;
 	}

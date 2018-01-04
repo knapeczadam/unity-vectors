@@ -10,8 +10,11 @@ public class _2D_01_Position : MonoBehaviour
 	
 	[Header("Player")]
 	public Vector2 PlayerPosition;
-	public float PlayerX;
-	public float PlayerY;
+	// Make these public to control them and uncomment the selected method to change player's position
+	private float PlayerX;
+	private float PlayerY;
+
+	private readonly Vector2 _zero = Vector2.zero;
 
 	private void OnEnable()
 	{
@@ -27,27 +30,31 @@ public class _2D_01_Position : MonoBehaviour
 	void Update ()
 	{
 		/*
-		 * Q: Should I use Translate() instead of transform.position = PlayerPosition?
-		 * _player.transform.Translate(PlayerPosition);
-		 *
-		 * Q: What is Time.deltaTime?
-//		 * _player.transform.Translate(PlayerPosition * Time.deltaTime);
+		 * Q: 
 		 */	
 		_player.transform.position = PlayerPosition;
-//		_player.transform.position = CreatePosition1();
-//		_player.transform.position = CreatePosition2();
-//		_player.transform.position = CreatePosition3();
+//		_player.transform.position = UpdatePositionV1();
+//		_player.transform.position = UpdatePositionV2();
+//		_player.transform.position = UpdatePositionV3();
+		
+		Draw();
 
 	}
 
-	private Vector2 CreatePosition1()
+	private void Draw()
+	{
+		Debug.DrawLine(_zero, new Vector2(PlayerPosition.x, 0), Color.red);
+		Debug.DrawLine(_zero, new Vector2(0, PlayerPosition.y), Color.green);
+	}
+
+	private Vector2 UpdatePositionV1()
 	{
 		Vector2 position = new Vector2(PlayerX, PlayerY);
 
 		return position;
 	}
 
-	private Vector2 CreatePosition2()
+	private Vector2 UpdatePositionV2()
 	{
 		Vector2 position = new Vector2();
 		position.Set(PlayerX, PlayerY);
@@ -55,7 +62,7 @@ public class _2D_01_Position : MonoBehaviour
 		return position;
 	}
 
-	private Vector2 CreatePosition3()
+	private Vector2 UpdatePositionV3()
 	{
 		Vector2 position = new Vector2();
 		position.x = PlayerX;
