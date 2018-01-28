@@ -9,14 +9,17 @@ public class _2D_02_SqrMagnitude : MonoBehaviour
 
 	[Header("Player")] 
 	public Vector2 PlayerPosition;
+	[ReadOnly]
 	public float PlayerSqrMagnitude;
 
 	private GameObject _enemy;
 	
 	[Header("Enemy")] 
 	public Vector2 EnemyPosition;
+	[ReadOnly]
 	public float EnemySqrMagnitude;
 	
+	[ReadOnly]
 	[Header("Farther from zero")]
 	public string text;
 	

@@ -16,6 +16,7 @@ public class _2D_06_Dot : MonoBehaviour {
 	public Vector2 EnemyPosition;
 
 	[Header("")]
+	[ReadOnly]
 	public float Dot;
 	
 	private readonly Vector2 _zero = Vector2.zero;

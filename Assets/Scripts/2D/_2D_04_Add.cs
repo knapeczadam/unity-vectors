@@ -8,7 +8,9 @@ public class _2D_04_Add : MonoBehaviour {
 	private GameObject _player;
 	
 	[Header("Player")]
+	[ReadOnly]
 	public float PlayerX;
+	[ReadOnly]
 	public float PlayerY;
 
 	[Header("Light side")] 

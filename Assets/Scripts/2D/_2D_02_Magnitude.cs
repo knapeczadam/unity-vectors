@@ -10,6 +10,8 @@ public class _2D_02_Magnitude : MonoBehaviour {
 	[Header("Player")]
 	public float PlayerX;
 	public float PlayerY;
+	
+	[ReadOnly]
 	public float Magnitude;
 	
 	private readonly Vector2 _zero = Vector2.zero;

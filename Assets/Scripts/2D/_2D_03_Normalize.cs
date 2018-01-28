@@ -11,9 +11,12 @@ public class _2D_03_Normalize : MonoBehaviour {
 	public float PlayerX;
 	public float PlayerY;
 
-	[Header("Normalize")] 
+	[Header("Normalize")]
+	[ReadOnly]
 	public float NormalizedX;
+	[ReadOnly]
 	public float NormalizedY;
+	[ReadOnly]
 	public float NormalizedMagnitude;
 
 	private readonly Vector2 _zero = Vector2.zero;

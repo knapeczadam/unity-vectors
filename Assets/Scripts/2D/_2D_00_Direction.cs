@@ -4,8 +4,8 @@ using UnityEngine.Collections;
 [ExecuteInEditMode]
 public class _2D_00_Direction : MonoBehaviour
 {
-    [ReadOnly]
     [Header("")]
+    [ReadOnly]
     public Vector2 Direction;
 
     [Header("")] 
@@ -17,9 +17,12 @@ public class _2D_00_Direction : MonoBehaviour
     public bool Right;
 
     // Can you setup these fields like the ones you see above (Zero, One, Up, etc.) ?
-    public bool PositiveInfinity;
-    public bool NegativeInfitiny;
-
+    public bool PositiveInfinity; // https://msdn.microsoft.com/en-us/library/system.single.positiveinfinity(v=vs.110).aspx
+    public bool NegativeInfitiny; // https://msdn.microsoft.com/en-us/library/system.single.negativeinfinity(v=vs.110).aspx
+    
+    /*
+     * Q: What is Inertial frame of reference?
+     */
     private BoolWrapper _zero;
     private BoolWrapper _one;
     private BoolWrapper _up;

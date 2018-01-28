@@ -18,18 +18,23 @@ public class _2D_05_Subtract : MonoBehaviour {
 	public float EnemyY;
 
 	[Header("")] 
+	[ReadOnly]
 	public string CalculationX;
+	[ReadOnly]
 	public string CalculationY;
 
 	private float _x;
 	private float _y;
 	
 	[Header("")]
+	[ReadOnly]
 	public float Distance;
 	
 	[Header("")]
+	[ReadOnly]
 	public bool reversed;
 
+	[ReadOnly]
 	public string YouAreThe = "";
 	
 	
