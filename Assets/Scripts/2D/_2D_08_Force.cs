@@ -46,7 +46,7 @@ public class _2D_08_Force : MonoBehaviour
 
         
         /*
-         * Q: Value of x will be 11.5 after 5 seconds in game mode. True or false?
+         * Q: Value of x (Player Position) will be 11.5 after 5 seconds in game mode. True or false?
          *
          * Q: How can you calculate the position of an accelerating body after a certain time?
          */
