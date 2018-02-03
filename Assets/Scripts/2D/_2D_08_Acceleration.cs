@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 
-public class _2D_08_Force : MonoBehaviour
+public class _2D_08_Acceleration : MonoBehaviour
 {
     private GameObject _player;
     private Rigidbody _rigidbody;
@@ -30,7 +30,7 @@ public class _2D_08_Force : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        
+        // https://www.geogebra.org/m/d7vZRB8r
     }
     
     
@@ -43,14 +43,14 @@ public class _2D_08_Force : MonoBehaviour
     void Update()
     {
         _timer += Time.deltaTime;
-
+        Debug.Log(_timer);
         
         /*
-         * Q: Value of x (Player Position) will be 11.5 after 5 seconds in game mode. True or false?
+         * Q: Value of x (Player Position) will be 8.5 after 4 seconds in game mode. True or false?
          *
          * Q: How can you calculate the position of an accelerating body after a certain time?
          */
-        _rigidbody.AddForce(_acceleration, ForceMode.Force);
+        _rigidbody.AddForce(_acceleration, ForceMode.Acceleration);
         Velocity = _rigidbody.velocity;
 
         PlayerPosition = _player.transform.position;

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class _2D_09_Constant_speed : MonoBehaviour {
+public class _2D_09_Velocity : MonoBehaviour {
 	
 	private GameObject _player;
 	private Rigidbody _rigidbody;
@@ -10,6 +10,9 @@ public class _2D_09_Constant_speed : MonoBehaviour {
 	[Header("Player")] 
 	[ReadOnly] 
 	public Vector2 PlayerPosition;
+
+	public Vector2 Velocity = Vector2.one;
+	private Vector3 _velocity;
 	
 	private float _timer;
 	
@@ -20,8 +23,10 @@ public class _2D_09_Constant_speed : MonoBehaviour {
 	}
 
 	// Use this for initialization
-	void Start () {
-		
+	void Start () 
+	{
+		// https://www.geogebra.org/m/Vp6p6Wyd
+		// https://www.geogebra.org/m/ttYkgBjA
 	}
 	
 	// Update is called once per frame
@@ -35,33 +40,38 @@ public class _2D_09_Constant_speed : MonoBehaviour {
 		 * Q:  The Time Manager (menu: Edit > Preferences... > Time Manager) lets you set a number of properties that control timing within your game. True or false?
 		 */
 		_timer += Time.deltaTime;
+		Debug.Log(_timer);
+
+		_velocity = Velocity;
 		
 		/*
-		 * Q: What's wrong with this function?
+		 * Q: What's wrong with this function? Fix it without using Time.fixedDeltaTime!
 		 */
-		UpdateVelocityV1();
+		UpdateVelocityV3();
 		
 		PlayerPosition = _player.transform.position;
+
+		Draw();
 	}
 	
 	private void UpdateVelocityV1()
 	{
-		_player.transform.position += new Vector3(1, 1);
-	}
-
-	private void UpdateVelocityV2()
-	{
-		_player.transform.position += new Vector3(1, 1) * Time.deltaTime;
+		_player.transform.position += _velocity;
 	}
 	
-	private void UpdateVelocityV3()
+	private void UpdateVelocityV2()
 	{
-		_player.transform.position += new Vector3(1, 1) * Time.fixedDeltaTime;
+		_player.transform.position += _velocity * Time.fixedDeltaTime;
 	}
 
-	private void UpdateVelocityV4()
+	private void UpdateVelocityV3()
 	{
-		_rigidbody.velocity = Vector2.one;
+		_rigidbody.velocity = _velocity;
+	}
+
+	private void Draw()
+	{
+		Debug.DrawLine(Vector3.zero, Velocity, Color.cyan);
 	}
 	
 	// https://answers.unity.com/questions/45676/making-a-timer-0000-minutes-and-seconds.html

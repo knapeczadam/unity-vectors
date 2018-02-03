@@ -29,8 +29,9 @@ public class _2D_04_Add : MonoBehaviour {
 	}
 
 	// Use this for initialization
-	void Start () {
-		
+	void Start () 
+	{
+		// https://www.geogebra.org/m/ty53wFpP
 	}
 	
 	// Update is called once per frame
@@ -54,9 +55,9 @@ public class _2D_04_Add : MonoBehaviour {
 	private void Draw()
 	{
 		Debug.DrawLine(_zero, new Vector2(LightX, LightY), Color.green);
-		Debug.DrawLine(new Vector2(LightX, LightY), new Vector2(PlayerX, PlayerY), Color.white);
+		Debug.DrawLine(new Vector2(LightX, LightY), new Vector2(PlayerX, PlayerY), Color.red);
 		Debug.DrawLine(_zero, new Vector2(DarkX, DarkY), Color.red);
-		Debug.DrawLine(new Vector2(DarkX, DarkY), new Vector2(PlayerX, PlayerY), Color.white);
+		Debug.DrawLine(new Vector2(DarkX, DarkY), new Vector2(PlayerX, PlayerY), Color.green);
 		Debug.DrawLine(_zero, new Vector2(PlayerX, PlayerY), Color.cyan);
 	}
 }

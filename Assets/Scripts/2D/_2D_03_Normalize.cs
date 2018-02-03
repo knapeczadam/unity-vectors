@@ -27,8 +27,9 @@ public class _2D_03_Normalize : MonoBehaviour {
 	}
 
 	// Use this for initialization
-	void Start () {
-		
+	void Start () 
+	{
+		// https://www.geogebra.org/m/SknjCDt9
 	}
 	
 	// Update is called once per frame

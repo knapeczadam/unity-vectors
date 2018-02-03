@@ -217,11 +217,12 @@ MonoBehaviour:
   PlayerY: 10
   EnemyX: -10
   EnemyY: 10
+  Calculation: Enemy - Player
   CalculationX: -10 - (10) = -20
   CalculationY: 10 - (10) = 0
   Distance: 20
-  reversed: 0
   YouAreThe: Player
+  reversed: 0
 --- !u!1001 &1160658547
 Prefab:
   m_ObjectHideFlags: 0

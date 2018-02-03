@@ -30,8 +30,9 @@ public class _2D_07_Angle : MonoBehaviour {
 	}
 
 	// Use this for initialization
-	void Start () {
-		
+	void Start () 
+	{
+		// https://www.geogebra.org/m/gKZEUkXU
 	}
 	
 	// Update is called once per frame

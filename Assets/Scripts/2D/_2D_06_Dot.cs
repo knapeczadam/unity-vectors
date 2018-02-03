@@ -28,8 +28,10 @@ public class _2D_06_Dot : MonoBehaviour {
 	}
 
 	// Use this for initialization
-	void Start () {
-		
+	void Start () 
+	{
+		// https://www.geogebra.org/m/N9pvSPf4
+		// https://www.geogebra.org/m/Yu6869By
 	}
 	
 	// Update is called once per frame

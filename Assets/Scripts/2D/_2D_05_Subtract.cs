@@ -18,6 +18,8 @@ public class _2D_05_Subtract : MonoBehaviour {
 	public float EnemyY;
 
 	[Header("")] 
+	[ReadOnly] 
+	public string Calculation;
 	[ReadOnly]
 	public string CalculationX;
 	[ReadOnly]
@@ -32,10 +34,9 @@ public class _2D_05_Subtract : MonoBehaviour {
 	
 	[Header("")]
 	[ReadOnly]
-	public bool reversed;
-
-	[ReadOnly]
 	public string YouAreThe = "";
+	
+	public bool reversed;
 	
 	
 	private readonly Vector2 _zero = Vector2.zero;
@@ -47,8 +48,9 @@ public class _2D_05_Subtract : MonoBehaviour {
 	}
 
 	// Use this for initialization
-	void Start () {
-		
+	void Start () 
+	{
+		// https://www.geogebra.org/m/vUAFWvmk
 	}
 	
 	// Update is called once per frame
@@ -73,6 +75,7 @@ public class _2D_05_Subtract : MonoBehaviour {
 			_x = PlayerX - EnemyX;
 			_y = PlayerY - EnemyY;
 
+			Calculation = "Player - Enemy";
 			CalculationX = PlayerX + " - (" + EnemyX + ") = " + _x;
 			CalculationY = PlayerY + " - (" + EnemyY + ") = " + _y;
 		}
@@ -81,7 +84,7 @@ public class _2D_05_Subtract : MonoBehaviour {
 			_x = EnemyX - PlayerX;
 			_y = EnemyY - PlayerY;
 			
-			
+			Calculation = "Enemy - Player";	
 			CalculationX = EnemyX + " - (" + PlayerX + ") = " + _x;
 			CalculationY = EnemyY + " - (" + PlayerY + ") = " + _y;
 		}
@@ -91,15 +94,19 @@ public class _2D_05_Subtract : MonoBehaviour {
 	{
 		Debug.DrawLine(_zero, _player.transform.position, Color.green);
 		Debug.DrawLine(_zero, _enemy.transform.position, Color.red);
-		Debug.DrawLine(_zero, new Vector2(_x, _y), Color.cyan);
+		Debug.DrawLine(_zero, new Vector2(_x, _y), Color.white);
 
 		if (reversed)
 		{
 			Debug.DrawLine(_enemy.transform.position, new Vector2(EnemyX, EnemyY) + new Vector2(_x, _y), Color.red);
+			Debug.DrawLine(_enemy.transform.position, _enemy.transform.position + _player.transform.position, Color.green);
+			Debug.DrawLine(_player.transform.position, _player.transform.position + _enemy.transform.position, Color.cyan);
 		}
 		else
 		{
 			Debug.DrawLine(_player.transform.position, new Vector2(PlayerX, PlayerY) + new Vector2(_x, _y), Color.green);
+			Debug.DrawLine(_enemy.transform.position, _enemy.transform.position + _player.transform.position, Color.magenta);
+			Debug.DrawLine(_player.transform.position, _player.transform.position + _enemy.transform.position, Color.red);
 		}
 	}
 }

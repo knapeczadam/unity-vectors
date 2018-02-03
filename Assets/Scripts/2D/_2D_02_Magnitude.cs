@@ -22,8 +22,9 @@ public class _2D_02_Magnitude : MonoBehaviour {
 	}
 
 	// Use this for initialization
-	void Start () {
-		
+	void Start () 
+	{
+		// https://www.geogebra.org/m/ChtswN6k
 	}
 	
 	// Update is called once per frame

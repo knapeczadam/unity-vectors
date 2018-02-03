@@ -22,8 +22,9 @@ public class _2D_01_Position : MonoBehaviour
 	}
 
 	// Use this for initialization
-	void Start () {
-		
+	void Start () 
+	{
+		// https://www.geogebra.org/m/sbT86GQW
 	}
 	
 	// Update is called once per frame
