@@ -1,74 +1,82 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
+using Vectors.CustomProperty.Attribute;
 
-[ExecuteInEditMode]
-public class _2D_01_Position : MonoBehaviour
+namespace Vectors._2D
 {
-
-	private GameObject _player;
-	
-	[Header("Player")]
-	public Vector2 PlayerPosition;
-	// Make these public to control them and uncomment the selected method to change player's position
-	private float PlayerX;
-	private float PlayerY;
-
-	private readonly Vector2 _zero = Vector2.zero;
-
-	private void OnEnable()
+	[ExecuteInEditMode]
+	public class _2D_01_Position : MonoBehaviour
 	{
-		_player = GameObject.FindWithTag(Constant.PLAYER_2D);
-	}
-
-	// Use this for initialization
-	void Start () 
-	{
-		// https://www.geogebra.org/m/sbT86GQW
-	}
-	
-	// Update is called once per frame
-	void Update ()
-	{
-		/*
-		 * Q: 
-		 */	
-		_player.transform.position = PlayerPosition;
-//		_player.transform.position = UpdatePositionV1();
-//		_player.transform.position = UpdatePositionV2();
-//		_player.transform.position = UpdatePositionV3();
+		private GameObject _player;
 		
-		Draw();
-
-	}
-
-	private void Draw()
-	{
-		Debug.DrawLine(_zero, new Vector2(PlayerPosition.x, 0), Color.red);
-		Debug.DrawLine(_zero, new Vector2(0, PlayerPosition.y), Color.green);
-	}
-
-	private Vector2 UpdatePositionV1()
-	{
-		Vector2 position = new Vector2(PlayerX, PlayerY);
-
-		return position;
-	}
-
-	private Vector2 UpdatePositionV2()
-	{
-		Vector2 position = new Vector2();
-		position.Set(PlayerX, PlayerY);
-
-		return position;
-	}
-
-	private Vector2 UpdatePositionV3()
-	{
-		Vector2 position = new Vector2();
-		position.x = PlayerX;
-		position.y = PlayerY;
-
-		return position;
+		private Vector2 _playerPosition;
+		
+		[Header("Player")]
+		
+		[_CA_Color(1, 0, 0, order = 0)]
+		[_CA_Range("X", -50, 50, order = 1)]
+		[SerializeField]
+		private float _playerX;
+	
+		[_CA_Color(0, 1, 0, order = 0)]
+		[_CA_Range("Y", -50, 50, order = 1)]
+		[SerializeField]
+		private float _playerY;
+	
+		private readonly Vector2 _zero = Vector2.zero;
+	
+		private void OnEnable()
+		{
+			_player = GameObject.FindWithTag(Constant.PLAYER_2D);
+		}
+	
+		// Use this for initialization
+		void Start () 
+		{
+			// https://www.geogebra.org/m/sbT86GQW
+		}
+		
+		// Update is called once per frame
+		void Update ()
+		{
+			/*
+			 * Q: 
+			 */	
+			
+			_player.transform.position = UpdatePositionV1();
+	//		_player.transform.position = UpdatePositionV2();
+	//		_player.transform.position = UpdatePositionV3();
+			
+			Draw();
+		}
+	
+		private void Draw()
+		{
+			Debug.DrawLine(_zero, new Vector2(_playerPosition.x, 0), Color.red);
+			Debug.DrawLine(_zero, new Vector2(0, _playerPosition.y), Color.green);
+		}
+	
+		private Vector2 UpdatePositionV1()
+		{
+			_playerPosition = new Vector2(_playerX, _playerY);
+	
+			return _playerPosition;
+		}
+	
+		private Vector2 UpdatePositionV2()
+		{
+			Vector2 position = new Vector2();
+			position.Set(_playerX, _playerY);
+	
+			return position;
+		}
+	
+		private Vector2 UpdatePositionV3()
+		{
+			Vector2 position = new Vector2();
+			position.x = _playerX;
+			position.y = _playerY;
+	
+			return position;
+		}
 	}
 }

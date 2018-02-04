@@ -213,16 +213,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 42ae1751e0e1002478e6e10fe54e823e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PlayerX: 10
-  PlayerY: 10
-  EnemyX: -10
-  EnemyY: 10
-  Calculation: Enemy - Player
-  CalculationX: -10 - (10) = -20
-  CalculationY: 10 - (10) = 0
-  Distance: 20
-  YouAreThe: Player
-  reversed: 0
+  _playerX: 10
+  _playerY: 10
+  _enemyX: -10
+  _enemyY: 10
+  _calculation: Enemy - Player
+  _calculationX: -10 - (10) = -20
+  _calculationY: 10 - (10) = 0
+  _distance: 20
+  _youAreThe: Player
+  Reversed: 0
 --- !u!1001 &1160658547
 Prefab:
   m_ObjectHideFlags: 0

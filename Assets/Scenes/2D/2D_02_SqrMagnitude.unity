@@ -171,11 +171,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f0732baffb6f759469a89330b1fc3a27, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PlayerPosition: {x: 10, y: 0}
-  PlayerSqrMagnitude: 100
-  EnemyPosition: {x: -10, y: 0}
-  EnemySqrMagnitude: 100
-  text: Equal
+  _playerX: 10
+  _playerY: 0
+  _playerSqrMagnitude: 100
+  _enemyX: -10
+  _enemyY: 0
+  _enemySqrMagnitude: 100
+  _text: Equal
 --- !u!1001 &1048906256
 Prefab:
   m_ObjectHideFlags: 0

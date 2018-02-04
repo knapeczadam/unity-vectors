@@ -229,11 +229,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6bda85d5a6638eb419fa136467410ca5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PlayerX: 10
-  PlayerY: 0
-  NormalizedX: 1
-  NormalizedY: 0
-  NormalizedMagnitude: 1
+  _playerX: 10
+  _playerY: 0
+  _normalizedX: 1
+  _normalizedY: 0
+  _normalizedMagnitude: 1
 --- !u!1001 &2142039473
 Prefab:
   m_ObjectHideFlags: 0

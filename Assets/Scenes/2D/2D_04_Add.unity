@@ -200,7 +200,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4153486501359200, guid: 47bc02f0ad10a594f87ec14a22b4b23a, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 10
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 4153486501359200, guid: 47bc02f0ad10a594f87ec14a22b4b23a, type: 2}
       propertyPath: m_RootOrder
@@ -218,27 +218,27 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4117215351315882, guid: 8b9facb538914ea458ba3bdb4aa548fd, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -1.9912971
       objectReference: {fileID: 0}
     - target: {fileID: 4117215351315882, guid: 8b9facb538914ea458ba3bdb4aa548fd, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 8.618761
       objectReference: {fileID: 0}
     - target: {fileID: 4117215351315882, guid: 8b9facb538914ea458ba3bdb4aa548fd, type: 2}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -58.797783
       objectReference: {fileID: 0}
     - target: {fileID: 4117215351315882, guid: 8b9facb538914ea458ba3bdb4aa548fd, type: 2}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 4117215351315882, guid: 8b9facb538914ea458ba3bdb4aa548fd, type: 2}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 4117215351315882, guid: 8b9facb538914ea458ba3bdb4aa548fd, type: 2}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 4117215351315882, guid: 8b9facb538914ea458ba3bdb4aa548fd, type: 2}
       propertyPath: m_LocalRotation.w
@@ -267,9 +267,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9409b7da20b53674bb513e297604935d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PlayerX: 0
-  PlayerY: 10
-  LightX: 5
-  LightY: 5
-  DarkX: -5
-  DarkY: 5
+  _playerX: 0
+  _playerY: 20
+  _lightX: 10
+  _lightY: 10
+  _darkX: -10
+  _darkY: 10

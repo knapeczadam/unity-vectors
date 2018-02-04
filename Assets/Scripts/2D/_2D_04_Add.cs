@@ -1,63 +1,82 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
+using Vectors.CustomProperty.Attribute;
 
-[ExecuteInEditMode]
-public class _2D_04_Add : MonoBehaviour {
+namespace Vectors._2D
+{
+	[ExecuteInEditMode]
+	public class _2D_04_Add : MonoBehaviour {
+		
+		private GameObject _player;
+		
+		[Header("Player")]
+		[_CA_ReadOnlyLabel("X")]
+		[SerializeField]
+		private float _playerX;
+		
+		[_CA_ReadOnlyLabel("Y")]
+		[SerializeField]
+		private float _playerY;
 	
-	private GameObject _player;
+		[Header("Light side")]
+		[_CA_Color(1, 0, 0, order = 0)]
+		[_CA_Range("X", -50, 50, order = 1)]
+		[SerializeField]
+		private float _lightX;
+		
+		[_CA_Color(0, 1, 0, order = 0)]
+		[_CA_Range("Y", -50, 50, order = 1)]
+		[SerializeField]
+		private float _lightY;
 	
-	[Header("Player")]
-	[ReadOnly]
-	public float PlayerX;
-	[ReadOnly]
-	public float PlayerY;
-
-	[Header("Light side")] 
-	public float LightX;
-	public float LightY;
-
-	[Header("Dark side")] 
-	public float DarkX;
-	public float DarkY;
+		[Header("Dark side")]
+		[_CA_Color(1, 0, 0, order = 0)]
+		[_CA_Range("X", -50, 50, order = 1)]
+		[SerializeField]
+		private float _darkX;
+		
+		[_CA_Color(0, 1, 0, order = 0)]
+		[_CA_Range("Y", -50, 50, order = 1)]
+		[SerializeField]
+		private float _darkY;
+		
+		private readonly Vector2 _zero = Vector2.zero;
+		
+		private void OnEnable()
+		{
+			_player = GameObject.FindWithTag(Constant.PLAYER_2D);
+		}
 	
-	private readonly Vector2 _zero = Vector2.zero;
+		// Use this for initialization
+		void Start () 
+		{
+			// https://www.geogebra.org/m/ty53wFpP
+		}
+		
+		// Update is called once per frame
+		void Update () {
+			Add();
+			_player.transform.position = new Vector2(_playerX,_playerY);
+			Draw();
+		}
 	
-	private void OnEnable()
-	{
-		_player = GameObject.FindWithTag(Constant.PLAYER_2D);
-	}
-
-	// Use this for initialization
-	void Start () 
-	{
-		// https://www.geogebra.org/m/ty53wFpP
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		Add();
-		_player.transform.position = new Vector2(PlayerX,PlayerY);
-		Draw();
-	}
-
-	private void Add()
-	{
-		/*
-		 * Q: What is operator overloading in C#?
-		 *
-		 * Q: Is vector addition commutative?
-		 */
-		PlayerX = LightX + DarkX;
-		PlayerY = LightY + DarkY;
-	}
-	
-	private void Draw()
-	{
-		Debug.DrawLine(_zero, new Vector2(LightX, LightY), Color.green);
-		Debug.DrawLine(new Vector2(LightX, LightY), new Vector2(PlayerX, PlayerY), Color.red);
-		Debug.DrawLine(_zero, new Vector2(DarkX, DarkY), Color.red);
-		Debug.DrawLine(new Vector2(DarkX, DarkY), new Vector2(PlayerX, PlayerY), Color.green);
-		Debug.DrawLine(_zero, new Vector2(PlayerX, PlayerY), Color.cyan);
+		private void Add()
+		{
+			/*
+			 * Q: What is operator overloading in C#?
+			 *
+			 * Q: Is vector addition commutative?
+			 */
+			_playerX = _lightX + _darkX;
+			_playerY = _lightY + _darkY;
+		}
+		
+		private void Draw()
+		{
+			Debug.DrawLine(_zero, new Vector2(_lightX, _lightY), Color.green);
+			Debug.DrawLine(new Vector2(_lightX, _lightY), new Vector2(_playerX, _playerY), Color.red);
+			Debug.DrawLine(_zero, new Vector2(_darkX, _darkY), Color.red);
+			Debug.DrawLine(new Vector2(_darkX, _darkY), new Vector2(_playerX, _playerY), Color.green);
+			Debug.DrawLine(_zero, new Vector2(_playerX, _playerY), Color.cyan);
+		}
 	}
 }
