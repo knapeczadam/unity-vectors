@@ -4,7 +4,7 @@ using Vectors.CustomProperty.Attribute;
 namespace Vectors._2D
 {
 	[ExecuteInEditMode]
-	public class _2D_04_Add : MonoBehaviour {
+	public class _2D_04_Addition : MonoBehaviour {
 		
 		private GameObject _player;
 		
