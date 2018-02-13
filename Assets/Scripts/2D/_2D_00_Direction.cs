@@ -26,7 +26,11 @@ namespace Vectors._2D
         public bool NegativeInfitiny; // https://msdn.microsoft.com/en-us/library/system.single.negativeinfinity(v=vs.110).aspx
         
         /*
+         * Q: In mathematics, physics, and engineering, a Euclidean vector is a geometric object that has only direction. True or false?
+         * 
          * Q: What is Inertial frame of reference?
+         *
+         * Q: What is unit vector?
          */
         private BoolWrapper _zero;
         private BoolWrapper _one;

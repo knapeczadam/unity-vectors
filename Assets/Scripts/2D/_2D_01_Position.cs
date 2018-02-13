@@ -21,6 +21,14 @@ namespace Vectors._2D
 		[_CA_Range("Y", -50, 50, order = 1)]
 		[SerializeField]
 		private float _playerY;
+		
+		// -----
+		
+		/*
+		 * 
+		 * Poor enemy can't move. Can you help him to control his movement?  
+		 * 
+		 */
 	
 		private readonly Vector2 _zero = Vector2.zero;
 	
@@ -39,7 +47,9 @@ namespace Vectors._2D
 		void Update ()
 		{
 			/*
-			 * Q: 
+			 * Q: Every object in a scene has a Transform. True or false?
+			 *
+			 * Q: Every Transform can have multiple parents, which allows you to apply position and rotation. True or false?
 			 */	
 			
 			_player.transform.position = UpdatePositionV1();

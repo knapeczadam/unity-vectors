@@ -72,7 +72,7 @@ namespace Vectors._2D
 				_enemy.transform.position = _enemyPosition;
 			}
 			/*
-			 * Q: _ange can be greater than 180 degrees. True or false?
+			 * Q: _angle can be greater than 180 degrees. True or false?
 			 *
 			 * Q: 57.29578f is a magic number, can't be calculated. True or false?
 			 */

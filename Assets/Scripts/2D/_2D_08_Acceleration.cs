@@ -52,6 +52,8 @@ namespace Vectors._2D
              * Q: Value of x (Player Position) will be 8.5 after 4 seconds in game mode. True or false?
              *
              * Q: How can you calculate the position of an accelerating body after a certain time?
+             *
+             * Q: What is enum?
              */
             _rigidbody.AddForce(_acceleration, ForceMode.Acceleration);
             _velocity = _rigidbody.velocity;

@@ -55,7 +55,7 @@ namespace Vectors._2D
 			Normalize();
 			
 			/*
-			 * Q: What is unit vector?
+			 * Q: Zero vector can be normalized. True or false?
 			 * 
 			 * Q: Magnitude of a normalized vector is always between 0 and 1. True or false?
 			 */
