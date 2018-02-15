@@ -31,6 +31,8 @@ namespace Vectors._2D
          * Q: What is Inertial frame of reference?
          *
          * Q: What is unit vector?
+         *
+         * Q: Vector2 is a class. True or false?
          */
         private BoolWrapper _zero;
         private BoolWrapper _one;

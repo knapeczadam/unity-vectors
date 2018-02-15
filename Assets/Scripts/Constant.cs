@@ -7,5 +7,6 @@
         public static readonly string ENEMY_2D = "Enemy2D";
         public static readonly string ENEMY_3D = "Enemy3D";
         public static readonly string CLONE = "Clone";
+        public static readonly string PARENT = "Parent";
     }
 }

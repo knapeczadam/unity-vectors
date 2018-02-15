@@ -6,9 +6,23 @@ namespace Vectors._2D
 	[ExecuteInEditMode]
 	public class _2D_01_Position : MonoBehaviour
 	{
-		private GameObject _player;
+		private GameObject _parent;
 		
-		private Vector2 _playerPosition;
+		[Header("Parent")]
+		
+		[_CA_Color(1, 0, 0, order = 0)]
+		[_CA_Range("X", -50, 50, order = 1)]
+		[SerializeField]
+		private float _parentX;
+	
+		[_CA_Color(0, 1, 0, order = 0)]
+		[_CA_Range("Y", -50, 50, order = 1)]
+		[SerializeField]
+		private float _parentY;
+
+		[Space]
+		
+		private GameObject _player;
 		
 		[Header("Player")]
 		
@@ -21,6 +35,11 @@ namespace Vectors._2D
 		[_CA_Range("Y", -50, 50, order = 1)]
 		[SerializeField]
 		private float _playerY;
+
+		[Space] 
+		
+		[SerializeField]
+		private bool _local;
 		
 		// -----
 		
@@ -34,6 +53,7 @@ namespace Vectors._2D
 	
 		private void OnEnable()
 		{
+			_parent = GameObject.FindWithTag(Constant.PARENT);
 			_player = GameObject.FindWithTag(Constant.PLAYER_2D);
 		}
 	
@@ -50,29 +70,47 @@ namespace Vectors._2D
 			 * Q: Every object in a scene has a Transform. True or false?
 			 *
 			 * Q: Every Transform can have multiple parents, which allows you to apply position and rotation. True or false?
-			 */	
-			
-			_player.transform.position = UpdatePositionV1();
-	//		_player.transform.position = UpdatePositionV2();
-	//		_player.transform.position = UpdatePositionV3();
+			 */
+
+			if (_local)
+			{
+				/*
+				 * Q: If the transform has no parent, it is the same as Transform.position. True or false?
+				 */
+				_player.transform.localPosition = UpdatePlayerPositionV1();
+			}
+			else
+			{
+				_player.transform.position = UpdatePlayerPositionV2();
+			}
+
+			UpdateParentPosition();
 			
 			Draw();
 		}
 	
 		private void Draw()
 		{
-			Debug.DrawLine(_zero, new Vector2(_playerPosition.x, 0), Color.red);
-			Debug.DrawLine(_zero, new Vector2(0, _playerPosition.y), Color.green);
+			if (_local)
+			{
+				Debug.DrawLine(new Vector2(_parentX, _parentY), new Vector2(_parentX + _playerX, _parentY), Color.red);
+				Debug.DrawLine(new Vector2(_parentX, _parentY), new Vector2(_parentX, _parentY + _playerY), Color.green);
+			}
+			else
+			{
+				Debug.DrawLine(_zero, new Vector2(_playerX, 0), Color.red);
+				Debug.DrawLine(_zero, new Vector2(0, _playerY), Color.green);
+			}
 		}
 	
-		private Vector2 UpdatePositionV1()
+		private Vector2 UpdatePlayerPositionV1()
 		{
-			_playerPosition = new Vector2(_playerX, _playerY);
+			Vector2 position = new Vector2(_playerX, _playerY);
 	
-			return _playerPosition;
+			return position;
 		}
 	
-		private Vector2 UpdatePositionV2()
+		private Vector2 UpdatePlayerPositionV2()
 		{
 			Vector2 position = new Vector2();
 			position.Set(_playerX, _playerY);
@@ -80,13 +118,18 @@ namespace Vectors._2D
 			return position;
 		}
 	
-		private Vector2 UpdatePositionV3()
+		private Vector2 UpdatePlayerPositionV3()
 		{
 			Vector2 position = new Vector2();
 			position.x = _playerX;
 			position.y = _playerY;
 	
 			return position;
+		}
+
+		private void UpdateParentPosition()
+		{
+			_parent.transform.position = new Vector2(_parentX, _parentY);
 		}
 	}
 }

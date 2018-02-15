@@ -9,6 +9,7 @@ TagManager:
   - Enemy2D
   - Enemy3D
   - Clone
+  - Parent
   layers:
   - Default
   - TransparentFX
