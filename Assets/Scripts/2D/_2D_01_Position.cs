@@ -105,6 +105,12 @@ namespace Vectors._2D
 	
 		private Vector2 UpdatePlayerPositionV1()
 		{
+			/*
+			 * Q: If the coordinates represent spatial positions (displacements), it is common to represent the vector from the origin to the point of interest as _.
+			 *
+			 * Q: In two dimensions, the vector from the origin to the point with Cartesian coordinates (x, y) can be written as _ = _ + _ where
+			 * _ = (), and _ = () are _ vectors in the direction of the x-axis and y-axis respectively.
+			 */
 			Vector2 position = new Vector2(_playerX, _playerY);
 	
 			return position;
@@ -112,6 +118,9 @@ namespace Vectors._2D
 	
 		private Vector2 UpdatePlayerPositionV2()
 		{
+			/*
+			 * I: The coordinate axes x and y are themselves vectors! They have a magnitude and a direction.
+			 */
 			Vector2 position = new Vector2();
 			position.Set(_playerX, _playerY);
 	
@@ -120,6 +129,11 @@ namespace Vectors._2D
 	
 		private Vector2 UpdatePlayerPositionV3()
 		{
+			/*
+			 * Q: A vector component is a scalar quantity. True or false?
+			 * 
+			 * Q: In a two-dimensional coordinate system, any vector can be broken into _-component and _-component.
+			 */
 			Vector2 position = new Vector2();
 			position.x = _playerX;
 			position.y = _playerY;

@@ -11,6 +11,16 @@ namespace Vectors._2D
         [_CA_ReadOnly]
         [SerializeField]
         private Vector2 _direction;
+        
+        /*
+         * Q: What is Cartesian coordinate system?
+         *
+         * Q: Who was René Descartes?
+         * 
+         * Q: Difference between right-handed and left-handed coordinate system?
+         *
+         * Q: Unity uses right-handed coordinate system. True or false?
+         */
     
         [Space]
         
@@ -27,6 +37,8 @@ namespace Vectors._2D
         
         /*
          * Q: In mathematics, physics, and engineering, a Euclidean vector is a geometric object that has only direction. True or false?
+         *
+         * Q: Who was Euclid?
          * 
          * Q: What is Inertial frame of reference?
          *

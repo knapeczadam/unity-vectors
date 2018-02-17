@@ -4,7 +4,7 @@ using Vectors.CustomProperty.Attribute;
 
 namespace Vectors._2D
 {
-    public class _2D_08_Acceleration : MonoBehaviour
+    public class _2D_12_Acceleration : MonoBehaviour
     {
         private GameObject _player;
         private Rigidbody _rigidbody;
