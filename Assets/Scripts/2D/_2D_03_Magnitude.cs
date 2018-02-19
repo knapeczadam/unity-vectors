@@ -43,6 +43,8 @@ namespace Vectors._2D
 			_player.transform.position = new Vector2(_playerX, _playerY);
 			/*
 			 * Q: What's the alternative of CalculateMagnitude()?
+			 *
+			 * Q: What does Vector2.Distance do?
 			 */
 			Magnitude = CalculateMagnitude();
 			
@@ -51,10 +53,7 @@ namespace Vectors._2D
 		
 		private float CalculateMagnitude()
 		{
-			/*
-			 * Pythagorean theorem
-			 * a * a + b * b = c * c
-			 */
+			// https://www.geogebra.org/m/wdQ5VRW9
 			return Mathf.Sqrt(_playerX * _playerX + _playerY * _playerY);
 		}
 	

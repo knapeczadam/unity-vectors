@@ -51,6 +51,10 @@ namespace Vectors._2D
 			
 			/*
 			 * Q: Difference between transform.position.normalized and transform.position.Normalize()?
+			 *
+			 * Q: 9.99999974737875E-06 is greater than 0.000001. True or false?
+			 *
+			 * Q: 9.99999974737875E-06: Where does this number come from?
 			 */
 			Normalize();
 			

@@ -10,6 +10,7 @@ TagManager:
   - Enemy3D
   - Clone
   - Parent
+  - Bullet2D
   layers:
   - Default
   - TransparentFX
