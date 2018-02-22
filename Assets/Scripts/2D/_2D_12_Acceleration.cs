@@ -7,7 +7,7 @@ namespace Vectors._2D
     public class _2D_12_Acceleration : MonoBehaviour
     {
         private GameObject _player;
-        private Rigidbody _rigidbody;
+        private Rigidbody2D _rigidbody;
     
         [Header("Player")] 
         [_CA_ReadOnlyLabel("Position")]
@@ -23,17 +23,13 @@ namespace Vectors._2D
         private int _counter = 1;
         private float _timer;
     
-    
-        private void OnEnable()
-        {
-            _player = GameObject.FindWithTag(Constant.PLAYER_2D);
-            _rigidbody = _player.GetComponent<Rigidbody>();
-        }
-    
         // Use this for initialization
         void Start()
         {
             // https://www.geogebra.org/m/d7vZRB8r
+            
+            _player = GameObject.FindWithTag(Constant.PLAYER_2D);
+            _rigidbody = _player.GetComponent<Rigidbody2D>();
         }
         
         
@@ -54,8 +50,14 @@ namespace Vectors._2D
              * Q: How can you calculate the position of an accelerating body after a certain time?
              *
              * Q: What is enum?
+             *
+             * Q: Default value of AddForce's mode is ForceMode2D.Impulse. True or false?
+             *
+             * Q: ForceMode2D.Force is a constant. True or false?
+             *
+             * Q: Is there any difference between using Constant Force 2D componenet and AddForce (applied on Rigidbody2D)?
              */
-            _rigidbody.AddForce(_acceleration, ForceMode.Acceleration);
+            _rigidbody.AddForce(_acceleration);
             _velocity = _rigidbody.velocity;
     
             _playerPosition = _player.transform.position;

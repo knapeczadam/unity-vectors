@@ -203,6 +203,11 @@ Prefab:
       propertyPath: m_UseGravity
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 50736050218223482, guid: 47bc02f0ad10a594f87ec14a22b4b23a,
+        type: 2}
+      propertyPath: m_UseAutoMass
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 47bc02f0ad10a594f87ec14a22b4b23a, type: 2}
   m_IsPrefabParent: 0
@@ -264,5 +269,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e80487a43797ccb4eb350ac0be9c2b61, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PlayerPosition: {x: 0, y: 0}
-  Velocity: {x: 0, y: 0}
+  _playerPosition: {x: 0, y: 0}
+  _velocity: {x: 0, y: 0}

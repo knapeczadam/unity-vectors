@@ -6,29 +6,35 @@ namespace Vectors._2D
 	public class _2D_13_Velocity : MonoBehaviour {
 		
 		private GameObject _player;
-		private Rigidbody _rigidbody;
+		private Rigidbody2D _rigidbody;
 	
 		[Header("Player")] 
 		[_CA_ReadOnlyLabel("Position")]
 		[SerializeField]
 		private Vector2 _playerPosition;
+		
+		[Header("Velocity")]
+		[_CA_Color(1, 0, 0, order = 0)]
+		[_CA_Range("X", -50, 50, order = 1)]
+		[SerializeField]
+		private float _velocityX;
+		
+		[_CA_Color(0, 1, 0, order = 0)]
+		[_CA_Range("Y", -50, 50, order = 1)]
+		[SerializeField]
+		private float _velocityY;
 	
-		public Vector2 Velocity = Vector2.one;
 		private Vector3 _velocity;
 		
 		private float _timer;
-		
-		private void OnEnable()
-		{
-			_player = GameObject.FindWithTag(Constant.PLAYER_2D);
-			_rigidbody = _player.GetComponent<Rigidbody>();
-		}
 	
 		// Use this for initialization
 		void Start () 
 		{
-			// https://www.geogebra.org/m/Vp6p6Wyd
 			// https://www.geogebra.org/m/ttYkgBjA
+			
+			_player = GameObject.FindWithTag(Constant.PLAYER_2D);
+			_rigidbody = _player.GetComponent<Rigidbody2D>();
 		}
 		
 		// Update is called once per frame
@@ -44,7 +50,7 @@ namespace Vectors._2D
 			_timer += Time.deltaTime;
 			Debug.Log(_timer);
 	
-			_velocity = Velocity;
+			_velocity = new Vector2(_velocityX, _velocityY);
 			
 			/*
 			 * Q: What's wrong with this function? Fix it without using Time.fixedDeltaTime!
@@ -58,22 +64,24 @@ namespace Vectors._2D
 		
 		private void UpdateVelocityV1()
 		{
-			_player.transform.position += _velocity;
+			_player.transform.position += _velocity * Time.deltaTime;
 		}
-		
+
 		private void UpdateVelocityV2()
 		{
-			_player.transform.position += _velocity * Time.fixedDeltaTime;
+			_player.transform.position += _velocity * Time.fixedTime;
 		}
-	
+		
 		private void UpdateVelocityV3()
 		{
+			// https://docs.unity3d.com/ScriptReference/Rigidbody2D-velocity.html
+			// https://docs.unity3d.com/ScriptReference/Rigidbody-velocity.html
 			_rigidbody.velocity = _velocity;
 		}
 	
 		private void Draw()
 		{
-			Debug.DrawLine(Vector3.zero, Velocity, Color.cyan);
+			Debug.DrawLine(Vector3.zero, _velocity, Color.cyan);
 		}
 		
 		// https://answers.unity.com/questions/45676/making-a-timer-0000-minutes-and-seconds.html
