@@ -22,13 +22,13 @@ namespace Vectors._2D
 		
 		[Header("Player")]
 		
-		[_CA_Color(1, 0, 0, order = 0)]
+		[_CA_Color(_Color.Red, order = 0)]
 		[_CA_Range("X", -50, 50, order = 1)]
 		[SerializeField]
 		private float _playerX;
 
 
-		[_CA_Color(0, 1, 0, order = 0)]
+		[_CA_Color(_Color.Green, order = 0)]
 		[_CA_Range("Y", -50, 50, order = 1)]
 		[SerializeField]
 		private float _playerY;
@@ -42,7 +42,8 @@ namespace Vectors._2D
 		 *
 		 * Q: Vectors have magnitude and direction, scalars only have _.
 		 */
-		[_CA_Range("*", -10, 10, order = 0)]
+		[_CA_Color(_Color.Magenta, order = 0)]
+		[_CA_Range("*", -10, 10, order = 1)]
 		[SerializeField]
 		private float _k;
 		

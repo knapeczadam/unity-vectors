@@ -20,12 +20,12 @@ namespace Vectors._2D
 		private Vector2 _lightSide;
 	
 		[Header("Light side")]
-		[_CA_Color(1, 0, 0, order = 0)]
+		[_CA_Color(_Color.Red, order = 0)]
 		[_CA_Range("X", -50, 50, order = 1)]
 		[SerializeField]
 		private float _lightX;
 		
-		[_CA_Color(0, 1, 0, order = 0)]
+		[_CA_Color(_Color.Green, order = 0)]
 		[_CA_Range("Y", -50, 50, order = 1)]
 		[SerializeField]
 		private float _lightY;
@@ -35,12 +35,12 @@ namespace Vectors._2D
 		private Vector2 _darkSide;
 	
 		[Header("Dark side")]
-		[_CA_Color(1, 0, 0, order = 0)]
+		[_CA_Color(_Color.Red, order = 0)]
 		[_CA_Range("X", -50, 50, order = 1)]
 		[SerializeField]
 		private float _darkX;
 		
-		[_CA_Color(0, 1, 0, order = 0)]
+		[_CA_Color(_Color.Green, order = 0)]
 		[_CA_Range("Y", -50, 50, order = 1)]
 		[SerializeField]
 		private float _darkY;

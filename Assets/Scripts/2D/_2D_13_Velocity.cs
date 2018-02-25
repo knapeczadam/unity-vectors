@@ -14,12 +14,12 @@ namespace Vectors._2D
 		private Vector2 _playerPosition;
 		
 		[Header("Velocity")]
-		[_CA_Color(1, 0, 0, order = 0)]
+		[_CA_Color(_Color.Red, order = 0)]
 		[_CA_Range("X", -50, 50, order = 1)]
 		[SerializeField]
 		private float _velocityX;
 		
-		[_CA_Color(0, 1, 0, order = 0)]
+		[_CA_Color(_Color.Green, order = 0)]
 		[_CA_Range("Y", -50, 50, order = 1)]
 		[SerializeField]
 		private float _velocityY;

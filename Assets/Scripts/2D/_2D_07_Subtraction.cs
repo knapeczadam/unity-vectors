@@ -9,12 +9,12 @@ namespace Vectors._2D
 		private GameObject _player;
 		
 		[Header("Player")]
-		[_CA_Color(1, 0, 0, order = 0)]
+		[_CA_Color(_Color.Red, order = 0)]
 		[_CA_Range("X", -50, 50, order = 1)]
 		[SerializeField]
 		private float _playerX;
 		
-		[_CA_Color(0, 1, 0, order = 0)]
+		[_CA_Color(_Color.Green, order = 0)]
 		[_CA_Range("Y", -50, 50, order = 1)]
 		[SerializeField]
 		private float _playerY;
@@ -22,12 +22,12 @@ namespace Vectors._2D
 		private GameObject _enemy;
 		
 		[Header("Enemy")]
-		[_CA_Color(1, 0, 0, order = 0)]
+		[_CA_Color(_Color.Red, order = 0)]
 		[_CA_Range("X", -50, 50, order = 1)]
 		[SerializeField]
 		private float _enemyX;
 		
-		[_CA_Color(0, 1, 0, order = 0)]
+		[_CA_Color(_Color.Green, order = 0)]
 		[_CA_Range("Y", -50, 50, order = 1)]
 		[SerializeField]
 		private float _enemyY;
