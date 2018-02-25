@@ -25,6 +25,23 @@ namespace Vectors._2D
 		private float _velocityY;
 	
 		private Vector3 _velocity;
+
+		[Space] 
+		
+		[SerializeField]
+		private bool _limit;
+		
+		/*
+		 * Q: What will happen?
+		 *  1. Set min value (_CA_Range) to -50.
+		 *  2. Enable limit.
+		 *  3. Set velocity x to 3 and velocity y to 4.
+		 *  4. Change max speed to -4.9.
+		 *  5. Use UpdateVelocityV3.
+		 */
+		[_CA_Range(0, 50, order = 1)]
+		[SerializeField]
+		private float _maxSpeed;
 		
 		private float _timer;
 	
@@ -35,6 +52,7 @@ namespace Vectors._2D
 			
 			_player = GameObject.FindWithTag(Constant.PLAYER_2D);
 			_rigidbody = _player.GetComponent<Rigidbody2D>();
+			_maxSpeed = 1;
 		}
 		
 		// Update is called once per frame
@@ -64,7 +82,7 @@ namespace Vectors._2D
 		
 		private void UpdateVelocityV1()
 		{
-			_player.transform.position += _velocity * Time.deltaTime;
+			_player.transform.position += _velocity;
 		}
 
 		private void UpdateVelocityV2()
@@ -76,7 +94,14 @@ namespace Vectors._2D
 		{
 			// https://docs.unity3d.com/ScriptReference/Rigidbody2D-velocity.html
 			// https://docs.unity3d.com/ScriptReference/Rigidbody-velocity.html
-			_rigidbody.velocity = _velocity;
+			if (_limit)
+			{
+				_rigidbody.velocity = Vector2.ClampMagnitude(_velocity, _maxSpeed);
+			}
+			else
+			{
+				_rigidbody.velocity = _velocity;
+			}
 		}
 	
 		private void Draw()
