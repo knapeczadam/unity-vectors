@@ -47,6 +47,23 @@ namespace Vectors._2D
 		[SerializeField]
 		private float _k;
 		
+		[Space]
+		
+		[Header("Vector2.Scale")]
+		
+		[_CA_Color(_Color.Red, order = 0)]
+		[_CA_Range("X", -50, 50, order = 1)]
+		[SerializeField]
+		private float _scaleX;
+
+		[_CA_Color(_Color.Green, order = 0)]
+		[_CA_Range("Y", -50, 50, order = 1)]
+		[SerializeField]
+		private float _scaleY;
+		
+		[_CA_Label("Use")]
+		[SerializeField]
+		private bool _useScaleFunction;
 		
 		private readonly Vector2 _zero = Vector2.zero;
 
@@ -105,7 +122,14 @@ namespace Vectors._2D
 			 * 
 			 * Q: When you multiply a vector by a scalar, the result is a scalar. True or false?
 			 */
-			_clonePosition = new Vector2(_playerX * _k, _playerY * _k);
+			if (_useScaleFunction)
+			{
+				_clonePosition = Vector2.Scale(new Vector2(_playerX, _playerY), new Vector2(_scaleX, _scaleY));
+			}
+			else
+			{
+				_clonePosition = new Vector2(_playerX, _playerY) * _k;
+			}
 
 			return _clonePosition;
 		}
@@ -115,15 +139,32 @@ namespace Vectors._2D
 			/*
 			 * Q: What is a Vector Space?
 			 */
-			if (_k < 1)
+			if (_useScaleFunction)
 			{
-				Debug.DrawLine(_zero, new Vector2(_playerPosition.x, _playerPosition.y), Color.green);
-				Debug.DrawLine(_zero, new Vector2(_playerPosition.x * _k, _playerPosition.y * _k), Color.magenta);
+				if (_scaleX == _scaleY && _scaleX < 1)
+				{
+					Debug.DrawLine(_zero, _playerPosition, Color.green);
+					Debug.DrawLine(_zero, _clonePosition, Color.magenta);
+
+				}
+				else
+				{
+					Debug.DrawLine(_zero, _clonePosition, Color.magenta);
+					Debug.DrawLine(_zero, _playerPosition, Color.green);
+				}
 			}
 			else
 			{
-				Debug.DrawLine(_zero, new Vector2(_playerPosition.x * _k, _playerPosition.y * _k), Color.magenta);
-				Debug.DrawLine(_zero, new Vector2(_playerPosition.x, _playerPosition.y), Color.green);
+				if (_k < 1)
+				{
+					Debug.DrawLine(_zero, new Vector2(_playerPosition.x, _playerPosition.y), Color.green);
+					Debug.DrawLine(_zero, new Vector2(_playerPosition.x * _k, _playerPosition.y * _k), Color.magenta);
+				}
+				else
+				{
+					Debug.DrawLine(_zero, new Vector2(_playerPosition.x * _k, _playerPosition.y * _k), Color.magenta);
+					Debug.DrawLine(_zero, new Vector2(_playerPosition.x, _playerPosition.y), Color.green);
+				}
 			}
 		}
 	}
