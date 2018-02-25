@@ -6,7 +6,6 @@ namespace Vectors.CustomProperty.Attribute
     public class _CA_LabelAttribute : PropertyAttribute
     {
         public string Label { get; private set; }
-        public bool ReadOnly { get; private set; }
 
         public _CA_LabelAttribute(string label)
         {
