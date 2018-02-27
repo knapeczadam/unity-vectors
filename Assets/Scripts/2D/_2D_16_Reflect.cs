@@ -47,7 +47,7 @@ namespace Vectors._2D
 		// Use this for initialization
 		void Start () 
 		{
-			
+			// https://www.geogebra.org/m/RT7AWaSF
 		}
 		
 		// Update is called once per frame
