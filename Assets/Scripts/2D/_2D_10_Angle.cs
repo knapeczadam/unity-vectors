@@ -43,6 +43,11 @@ namespace Vectors._2D
 		[_CA_ReadOnly]
 		[SerializeField]
 		private float _angle;
+
+		[Space] 
+		
+		[SerializeField]
+		private bool _signed;
 	
 		private const float MaxDistanceFromZero = 10f;
 	
@@ -75,8 +80,17 @@ namespace Vectors._2D
 			 * Q: _angle can be greater than 180 degrees. True or false?
 			 *
 			 * Q: 57.29578f is a magic number, can't be calculated. True or false?
+			 *
+			 * Q: Mathf.Sign returns the sign of f. True or false?
 			 */
-			_angle = Vector2.Angle(_player.transform.position, _enemy.transform.position);
+			if (_signed)
+			{
+				_angle = Vector2.SignedAngle(_player.transform.position, _enemy.transform.position);
+			}
+			else
+			{
+				_angle = Vector2.Angle(_player.transform.position, _enemy.transform.position);
+			}
 			Draw();
 		}
 		
