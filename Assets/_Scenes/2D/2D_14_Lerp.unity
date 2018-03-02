@@ -301,7 +301,9 @@ MonoBehaviour:
   _playerY: 2
   _enemyX: -10
   _enemyY: 10
-  _transition: 0
+  _clampedTransition: 0
+  _unclampedTransition: 0
+  _unclamped: 0
 --- !u!1001 &1897410715
 Prefab:
   m_ObjectHideFlags: 0

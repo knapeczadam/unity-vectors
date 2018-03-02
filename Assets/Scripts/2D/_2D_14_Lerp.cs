@@ -35,14 +35,26 @@ namespace Vectors._2D
 		[Space]
 		
 		/*
-		 * Q: Does it make sense to increase the range of _transition?
+		 * Q: Does it make sense to increase the range of _clampedTransition?
 		 */
+		[Header("Lerp")]
 		[_CA_Color(_Color.White, order = 0)]
-		[_CA_Range(0, 1, order = 1)]
+		[_CA_Range("Transition", 0, 1, order = 1)]
 		[SerializeField]
-		private float _transition;
+		private float _clampedTransition;
+		
+		[Header("LerpUnclamped")]
+		[_CA_Color(_Color.White, order = 0)]
+		[_CA_Range("Transition", 0, 10, order = 1)]
+		[SerializeField]
+		private float _unclampedTransition;
 		
 		private GameObject _bullet;
+		
+		[Space]
+
+		[SerializeField]
+		private bool _unclamped;
 		
 		private void OnEnable()
 		{
@@ -67,7 +79,14 @@ namespace Vectors._2D
 			 * 
 			 * Q: What does Mathf.Clamp01 do? 
 			 */
-			_bullet.transform.position = Vector2.Lerp(_player.transform.position, _enemy.transform.position, _transition);
+			if (_unclamped)
+			{
+				_bullet.transform.position = Vector2.LerpUnclamped(_player.transform.position, _enemy.transform.position, _unclampedTransition);
+			}
+			else
+			{
+				_bullet.transform.position = Vector2.Lerp(_player.transform.position, _enemy.transform.position, _clampedTransition);
+			}
 		}
 
 		private void UpdatePositions()
