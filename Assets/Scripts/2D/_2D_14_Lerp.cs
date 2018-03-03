@@ -67,6 +67,8 @@ namespace Vectors._2D
 		void Start () 
 		{
 			// https://www.geogebra.org/m/sCyREjum
+			// http://www.blueraja.com/blog/404/how-to-use-unity-3ds-linear-interpolation-vector3-lerp-correctly
+			// http://theantranch.com/blog/using-lerp-properly/
 		}
 		
 		// Update is called once per frame
@@ -87,6 +89,8 @@ namespace Vectors._2D
 			{
 				_bullet.transform.position = Vector2.Lerp(_player.transform.position, _enemy.transform.position, _clampedTransition);
 			}
+			
+			DrawingHelper.DrawPoint(_bullet.transform.position, Color.white);
 		}
 
 		private void UpdatePositions()

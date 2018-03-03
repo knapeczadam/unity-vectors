@@ -39,6 +39,7 @@ namespace Vectors._2D
 		 *  4. Change max speed to -4.9.
 		 *  5. Use UpdateVelocityV3.
 		 */
+		[_CA_Color(_Color.Yellow, order = 0)]
 		[_CA_Range(0, 50, order = 1)]
 		[SerializeField]
 		private float _maxSpeed;
