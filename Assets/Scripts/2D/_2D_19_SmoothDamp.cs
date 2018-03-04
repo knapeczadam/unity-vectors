@@ -61,6 +61,12 @@ namespace Vectors._2D
          * Q: What is ref in C#?
          *
          * Q: This version of SmoothDamp also works: SmoothDamp(Vector2 current, Vector2 target, ref Vector2 currentVelocity, float smoothTime, float maxSpeed = Mathf.Infinity, float deltaTime = Time.deltaTime). True or false?
+         *
+         * Q: LateUpdate is always called before Update. True or false?
+         *
+         * Q: What is the execution order of event functions in Unity?
+         *
+         * Q: You can use the Script Execution Order settings (menu: Edit > Preferences... > 2D > Execution Order). True or false?
          */
         private void LateUpdate()
         {

@@ -41,7 +41,7 @@ namespace Vectors._2D
 		[SerializeField]
 		private string _calculationX;
 		
-		[_CA_ReadOnlyLabel("X")]
+		[_CA_ReadOnlyLabel("Y")]
 		[SerializeField]
 		private string _calculationY;
 	
