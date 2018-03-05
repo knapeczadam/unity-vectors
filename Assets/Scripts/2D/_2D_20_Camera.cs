@@ -149,6 +149,7 @@ namespace Vectors._2D
 		    Debug.DrawLine(_zero, _enemyPosition, Color.red);
 		    Debug.DrawLine(_playerPosition, _enemyPosition, Color.white);
 		    DrawingHelper.DrawPoint(new Vector2(_camera.transform.position.x, _camera.transform.position.y), Color.white);
+		    DrawingHelper.DrawRectangle(_camera.transform.position, _camera.orthographicSize * 4 / _padding, _camera.orthographicSize * 2 / _padding, Color.cyan);
 	    }
     }
 }

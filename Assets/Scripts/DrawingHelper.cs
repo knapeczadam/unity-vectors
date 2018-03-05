@@ -14,5 +14,18 @@ namespace Vectors
                 Debug.DrawLine(position + from, position + to, color);
             }
         }
+
+        public static void DrawRectangle(Vector2 center, float width, float height, Color color)
+        {
+            Vector2 topLeft = center + new Vector2(-width / 2, height / 2);
+            Vector2 topRight = topLeft + new Vector2(width, 0);
+            Vector2 bottomLeft = topLeft + new Vector2(0, -height);
+            Vector2 bottomRight = topRight + new Vector2(0, -height);
+            
+            Debug.DrawLine(topLeft, topRight, color);
+            Debug.DrawLine(bottomLeft, bottomRight, color);
+            Debug.DrawLine(topLeft, bottomLeft, color);
+            Debug.DrawLine(topRight, bottomRight, color);
+        }
     }
 }
