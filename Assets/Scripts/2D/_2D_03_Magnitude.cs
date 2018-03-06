@@ -7,9 +7,9 @@ namespace Vectors._2D
 	public class _2D_03_Magnitude : MonoBehaviour 
 	{
 		private GameObject _player;
+		private Vector2 _playerPosition;
 		
 		[Header("Player")]
-		
 		[_CA_Color(_Color.Red, order = 0)]
 		[_CA_Range("X", -50, 50, order = 1)]
 		[SerializeField]
@@ -39,16 +39,20 @@ namespace Vectors._2D
 		}
 		
 		// Update is called once per frame
-		void Update () {
-			_player.transform.position = new Vector2(_playerX, _playerY);
+		void Update () 
+		{
+			UpdatePlayerPosition();
 			/*
 			 * Q: What's the alternative of CalculateMagnitude()?
 			 *
 			 * Q: What does Vector2.Distance do?
 			 */
 			Magnitude = CalculateMagnitude();
-			
-			Draw();
+		}
+		
+		private void LateUpdate()
+		{
+			DebugLines();
 		}
 		
 		private float CalculateMagnitude()
@@ -56,12 +60,18 @@ namespace Vectors._2D
 			// https://www.geogebra.org/m/wdQ5VRW9
 			return Mathf.Sqrt(_playerX * _playerX + _playerY * _playerY);
 		}
-	
-		private void Draw()
+		
+		private void UpdatePlayerPosition()
 		{
-			Debug.DrawLine(_zero, new Vector2(_playerX, _playerY), Color.cyan);
+			_playerPosition = new Vector2(_playerX, _playerY);
+			_player.transform.position = _playerPosition;
+		}
+	
+		private void DebugLines()
+		{
+			Debug.DrawLine(_zero, _playerPosition, Color.cyan);
 			Debug.DrawLine(_zero, new Vector2(_playerX, 0), Color.red);
-			Debug.DrawLine(new Vector2(_playerX, 0), new Vector2(_playerX, _playerY), Color.green);
+			Debug.DrawLine(new Vector2(_playerX, 0), _playerPosition, Color.green);
 		}
 	}
 }

@@ -21,6 +21,8 @@ namespace Vectors._2D
 		private int _counter = 1;
 		private float _timer;
 		
+		private readonly Vector2 _zero =  Vector2.zero;
+		
 		// Use this for initialization
 		void Start () 
 		{
@@ -45,13 +47,16 @@ namespace Vectors._2D
 			
 			_playerPosition = _player.transform.position;
 			_force = _constantForce.force;
-
-			Draw();
+		}
+		
+		private void LateUpdate()
+		{
+			DebugLines();
 		}
 
-		private void Draw()
+		private void DebugLines()
 		{
-			Debug.DrawLine(Vector2.zero, _force, Color.cyan);
+			Debug.DrawLine(_zero, _force, Color.cyan);
 		}
 		
 		void OnGUI()

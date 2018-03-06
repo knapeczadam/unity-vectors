@@ -10,7 +10,6 @@ namespace Vectors._2D
         private Vector2 _playerPosition;
 		
         [Header("Player")]
-		
         [_CA_Color(_Color.Red, order = 0)]
         [_CA_Range("X", -50, 50, order = 1)]
         [SerializeField]
@@ -37,6 +36,8 @@ namespace Vectors._2D
         [SerializeField]
         private float _enemyY;
 	    
+	    // -----
+	    
 	    [Space]
 
 	    [_CA_ReadOnlyLabel("Approximately equal")]
@@ -60,12 +61,16 @@ namespace Vectors._2D
         // Update is called once per frame
         void Update()
         {
-	        UpdatePositions();
+	        UpdatePlayerPosition();
+	        UpdateEnemyPosition();
 
 	        _equal = ApproximatelyEqual(_playerPosition, _enemyPosition);
-	        
-	        Draw();
         }
+	    
+	    private void LateUpdate()
+	    {
+		    DebugLines();
+	    }
 	    
 	    private static bool ApproximatelyEqual(Vector2 lhs, Vector2 rhs)
 	    {
@@ -81,16 +86,19 @@ namespace Vectors._2D
 		    return (double) (lhs - rhs).sqrMagnitude < Vector2.kEpsilon;
 	    }
 	    
-	    private void UpdatePositions()
+	    private void UpdatePlayerPosition()
 	    {
 		    _playerPosition = new Vector2(_playerX, _playerY);
 		    _player.transform.position = _playerPosition;
-			
+	    }
+
+	    private void UpdateEnemyPosition()
+	    {
 		    _enemyPosition = new Vector2(_enemyX, _enemyY);
 		    _enemy.transform.position = _enemyPosition;
 	    }
 	    
-	    private void Draw()
+	    private void DebugLines()
 	    {
 		    Debug.DrawLine(_zero, _playerPosition, Color.green);
 		    Debug.DrawLine(_zero, _enemyPosition, Color.red);

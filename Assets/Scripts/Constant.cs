@@ -2,12 +2,12 @@
 {
     public static class Constant
     {
-        public static readonly string PLAYER_2D = "Player2D";
-        public static readonly string PLAYER_3D = "Player3D";
-        public static readonly string ENEMY_2D = "Enemy2D";
-        public static readonly string ENEMY_3D = "Enemy3D";
-        public static readonly string CLONE = "Clone";
-        public static readonly string PARENT = "Parent";
-        public static readonly string BULLET_2D = "Bullet2D";
+        public const string PLAYER_2D = "Player2D";
+        public const string PLAYER_3D = "Player3D";
+        public const string ENEMY_2D = "Enemy2D";
+        public const string ENEMY_3D = "Enemy3D";
+        public const string CLONE = "Clone";
+        public const string PARENT = "Parent";
+        public const string BULLET_2D = "Bullet2D";
     }
 }

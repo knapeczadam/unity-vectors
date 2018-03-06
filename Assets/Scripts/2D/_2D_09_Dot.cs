@@ -35,6 +35,8 @@ namespace Vectors._2D
 		[_CA_Range("Y", -50, 50, order = 1)]
 		[SerializeField]
 		private float _enemyY;
+		
+		// -----
 	
 		[Space]
 		
@@ -60,7 +62,9 @@ namespace Vectors._2D
 		// Update is called once per frame
 		void Update ()
 		{
-			UpdatePosition();
+			UpdatePlayerPosition();
+			UpdateEnemyPosition();
+			
 			/*
 			 * Q: What's the formula of dot product?
 			 *
@@ -72,23 +76,30 @@ namespace Vectors._2D
 			 *
 			 * Q: Why is vector division not possible?
 			 */
-			_dot = Vector2.Dot(_player.transform.position, _enemy.transform.position);
-			Draw();
+			_dot = Vector2.Dot(_playerPosition, _enemyPosition);
 		}
 		
-		private void UpdatePosition()
+		private void LateUpdate()
+		{
+			DebugLines();
+		}
+		
+		private void UpdatePlayerPosition()
 		{
 			_playerPosition = new Vector2(_playerX, _playerY);
 			_player.transform.position = _playerPosition;
-			
+		}
+
+		private void UpdateEnemyPosition()
+		{
 			_enemyPosition = new Vector2(_enemyX, _enemyY);
 			_enemy.transform.position = _enemyPosition;
 		}
 		
-		private void Draw()
+		private void DebugLines()
 		{
-			Debug.DrawLine(_zero, _player.transform.position, Color.green);
-			Debug.DrawLine(_zero, _enemy.transform.position, Color.red);
+			Debug.DrawLine(_zero, _playerPosition, Color.green);
+			Debug.DrawLine(_zero, _enemyPosition, Color.red);
 		}
 	}
 }

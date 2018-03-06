@@ -4,9 +4,10 @@ using Vectors.CustomProperty.Attribute;
 namespace Vectors._2D
 {
 	[ExecuteInEditMode]
-	public class _2D_07_Subtraction : MonoBehaviour {
-		
+	public class _2D_07_Subtraction : MonoBehaviour 
+	{
 		private GameObject _player;
+		private Vector2 _playerPosition;
 		
 		[Header("Player")]
 		[_CA_Color(_Color.Red, order = 0)]
@@ -19,7 +20,10 @@ namespace Vectors._2D
 		[SerializeField]
 		private float _playerY;
 		
+		// -----
+		
 		private GameObject _enemy;
+		private Vector2 _enemyPosition;
 		
 		[Header("Enemy")]
 		[_CA_Color(_Color.Red, order = 0)]
@@ -31,8 +35,11 @@ namespace Vectors._2D
 		[_CA_Range("Y", -50, 50, order = 1)]
 		[SerializeField]
 		private float _enemyY;
+		
+		// -----
 	
-		[Space] 
+		[Space]
+		
 		[_CA_ReadOnly]
 		[SerializeField]
 		private string _calculation;
@@ -56,12 +63,8 @@ namespace Vectors._2D
 		
 		[Space]
 		
-		[_CA_ReadOnly]
 		[SerializeField]
-		private string _youAreThe = "";
-		
-		public bool Reversed;
-		
+		public bool _switch;
 		
 		private readonly Vector2 _zero = Vector2.zero;
 		
@@ -78,23 +81,26 @@ namespace Vectors._2D
 		}
 		
 		// Update is called once per frame
-		void Update () {
-			_player.transform.position = new Vector2(_playerX, _playerY);
-			_enemy.transform.position = new Vector2(_enemyX, _enemyY);
+		void Update ()
+		{
+			UpdatePlayerPosition();
+			UpdateEnemyPosition();
 			Subtract();
-			Draw();
 			
 			/*
 			 * Vector2.Distance uses sqrMagnitude to calculate distance between two vectors. True or false?
 			 */
-			_distance = Vector2.Distance(_player.transform.position, _enemy.transform.position);
-	
-			_youAreThe = Reversed ? "Enemy" : "Player";
+			_distance = Vector2.Distance(_playerPosition, _enemyPosition);
+		}
+		
+		private void LateUpdate()
+		{
+			DebugLines();
 		}
 	
 		private void Subtract()
 		{
-			if (Reversed)
+			if (_switch)
 			{
 				_x = _playerX - _enemyX;
 				_y = _playerY - _enemyY;
@@ -113,24 +119,34 @@ namespace Vectors._2D
 				_calculationY = _enemyY + " - (" + _playerY + ") = " + _y;
 			}
 		}
-	
-		private void Draw()
+		
+		private void UpdatePlayerPosition()
 		{
-			Debug.DrawLine(_zero, _player.transform.position, Color.green);
-			Debug.DrawLine(_zero, _enemy.transform.position, Color.red);
+			_playerPosition = new Vector2(_playerX, _playerY);
+			_player.transform.position = _playerPosition;
+		}
+
+		private void UpdateEnemyPosition()
+		{
+			_enemyPosition = new Vector2(_enemyX, _enemyY);
+			_enemy.transform.position = _enemyPosition;
+		}
+	
+		private void DebugLines()
+		{
+			Debug.DrawLine(_zero, _playerPosition, Color.green);
+			Debug.DrawLine(_zero, _enemyPosition, Color.red);
 			Debug.DrawLine(_zero, new Vector2(_x, _y), Color.white);
 	
-			if (Reversed)
+			if (_switch)
 			{
-				Debug.DrawLine(_enemy.transform.position, new Vector2(_enemyX, _enemyY) + new Vector2(_x, _y), Color.red);
-				Debug.DrawLine(_enemy.transform.position, _enemy.transform.position + _player.transform.position, Color.green);
-				Debug.DrawLine(_player.transform.position, _player.transform.position + _enemy.transform.position, Color.cyan);
+				Debug.DrawLine(_playerPosition, new Vector2(_x, _y), Color.red);
+				Debug.DrawLine(_zero, -_enemyPosition, Color.cyan);
 			}
 			else
 			{
-				Debug.DrawLine(_player.transform.position, new Vector2(_playerX, _playerY) + new Vector2(_x, _y), Color.green);
-				Debug.DrawLine(_enemy.transform.position, _enemy.transform.position + _player.transform.position, Color.magenta);
-				Debug.DrawLine(_player.transform.position, _player.transform.position + _enemy.transform.position, Color.red);
+				Debug.DrawLine(_enemyPosition, new Vector2(_x, _y), Color.green);
+				Debug.DrawLine(_zero, -_playerPosition, Color.magenta);
 			}
 		}
 	}

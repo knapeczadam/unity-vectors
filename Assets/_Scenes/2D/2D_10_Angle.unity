@@ -255,11 +255,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 82c281608ee763f4496d180a5655f458, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _playerX: 4
-  _playerY: 2
-  _enemyX: -4
-  _enemyY: -2
-  _angle: 180
+  _playerPosition: {x: 1, y: 0}
+  _playerDegrees: 0
+  _playerK: 1
+  _enemyPosition: {x: 1, y: 0}
+  _enemyDegrees: 0
+  _enemyK: 1
+  _angle: 0
+  _signed: 0
 --- !u!1001 &422802544
 Prefab:
   m_ObjectHideFlags: 0
@@ -319,11 +322,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4153486501359200, guid: 47bc02f0ad10a594f87ec14a22b4b23a, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 4
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4153486501359200, guid: 47bc02f0ad10a594f87ec14a22b4b23a, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 2
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4153486501359200, guid: 47bc02f0ad10a594f87ec14a22b4b23a, type: 2}
       propertyPath: m_LocalPosition.z
@@ -361,11 +364,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4287571175797562, guid: 2a25dd98c46bb8a448e399a641efcd4b, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -4
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4287571175797562, guid: 2a25dd98c46bb8a448e399a641efcd4b, type: 2}
       propertyPath: m_LocalPosition.y
-      value: -2
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4287571175797562, guid: 2a25dd98c46bb8a448e399a641efcd4b, type: 2}
       propertyPath: m_LocalPosition.z

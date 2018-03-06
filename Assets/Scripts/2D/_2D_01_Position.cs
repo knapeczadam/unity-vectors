@@ -9,7 +9,6 @@ namespace Vectors._2D
 		private GameObject _parent;
 		
 		[Header("Parent")]
-		
 		[_CA_Color(_Color.Red, order = 0)]
 		[_CA_Range("X", -50, 50, order = 1)]
 		[SerializeField]
@@ -20,12 +19,12 @@ namespace Vectors._2D
 		[SerializeField]
 		private float _parentY;
 
-		[Space]
+		// -----
 		
 		private GameObject _player;
+		private Vector2 _playerPosition;
 		
 		[Header("Player")]
-		
 		[_CA_Color(_Color.Red, order = 0)]
 		[_CA_Range("X", -50, 50, order = 1)]
 		[SerializeField]
@@ -85,11 +84,14 @@ namespace Vectors._2D
 			}
 
 			UpdateParentPosition();
-			
-			Draw();
+		}
+		
+		private void LateUpdate()
+		{
+			DebugLines();
 		}
 	
-		private void Draw()
+		private void DebugLines()
 		{
 			if (_local)
 			{

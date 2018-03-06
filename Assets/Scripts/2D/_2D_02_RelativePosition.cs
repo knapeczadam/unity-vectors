@@ -47,6 +47,7 @@ namespace Vectors._2D
 		[SerializeField] 
 		private Vector2 _relativeToEnemy;
 		
+		private readonly Vector2 _zero = Vector2.zero;
 		
 		private void OnEnable()
 		{
@@ -63,26 +64,33 @@ namespace Vectors._2D
 		// Update is called once per frame
 		void Update () 
 		{
-			UpdatePosition();
+			UpdatePlayerPosition();
+			UpdateEnemyPosition();
 
 			_relativeToOrigin = _playerPosition;
 			_relativeToEnemy = _playerPosition - _enemyPosition;
 		}
 		
-		private void UpdatePosition()
+		private void LateUpdate()
+		{
+			DebugLines();
+		}
+
+		private void UpdatePlayerPosition()
 		{
 			_playerPosition = new Vector2(_playerX, _playerY);
 			_player.transform.position = _playerPosition;
-			
-			_enemyPosition = new Vector2(_enemyX, _enemyY);
-			_enemy.transform.position = _enemyPosition;
-
-			Draw();
 		}
 
-		private void Draw()
+		private void UpdateEnemyPosition()
 		{
-			Debug.DrawLine(Vector2.zero, new Vector2(_playerX, 0), Color.red);
+			_enemyPosition = new Vector2(_enemyX, _enemyY);
+			_enemy.transform.position = _enemyPosition;
+		}
+
+		private void DebugLines()
+		{
+			Debug.DrawLine(_zero, new Vector2(_playerX, 0), Color.red);
 			Debug.DrawLine(new Vector2(_playerX, 0), new Vector2(_playerX, _playerY), Color.green);
 			
 			Debug.DrawLine(_playerPosition, new Vector2(_playerPosition.x + (_enemyPosition - _playerPosition).x, _playerPosition.y), Color.red);

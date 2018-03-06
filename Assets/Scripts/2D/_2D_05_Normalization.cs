@@ -4,9 +4,10 @@ using Vectors.CustomProperty.Attribute;
 namespace Vectors._2D
 {
 	[ExecuteInEditMode]
-	public class _2D_05_Normalization : MonoBehaviour {
-		
+	public class _2D_05_Normalization : MonoBehaviour 
+	{
 		private GameObject _player;
+		private Vector2 _playerPosition;
 		
 		[Header("Player")]
 		[_CA_Color(_Color.Red, order = 0)]
@@ -18,8 +19,10 @@ namespace Vectors._2D
 		[_CA_Range("Y", -50, 50, order = 1)]
 		[SerializeField]
 		private float _playerY;
+		
+		// -----
 	
-		[Header("Normalize")]
+		[Header("Normalized")]
 		[_CA_ReadOnlyLabel("X")]
 		[SerializeField]
 		private float _normalizedX;
@@ -46,8 +49,9 @@ namespace Vectors._2D
 		}
 		
 		// Update is called once per frame
-		void Update () {
-			_player.transform.position = new Vector2(_playerX, _playerY);
+		void Update ()
+		{
+			UpdatePlayerPosition();
 			
 			/*
 			 * Q: Difference between transform.position.normalized and transform.position.Normalize()?
@@ -64,8 +68,11 @@ namespace Vectors._2D
 			 * Q: Magnitude of a normalized vector is always between 0 and 1. True or false?
 			 */
 			_normalizedMagnitude = new Vector2(_normalizedX, _normalizedY).magnitude;
-			
-			Draw();
+		}
+		
+		private void LateUpdate()
+		{
+			DebugLines();
 		}
 	
 		private void Normalize()
@@ -81,11 +88,17 @@ namespace Vectors._2D
 			_normalizedX = _playerX / length;
 			_normalizedY = _playerY / length;
 		}
-	
-		private void Draw()
+		
+		private void UpdatePlayerPosition()
 		{
-			Debug.DrawLine(_zero, new Vector2(_playerX, _playerY), Color.cyan);
-			Debug.DrawLine(_zero, _player.transform.position.normalized, Color.magenta);
+			_playerPosition = new Vector2(_playerX, _playerY);
+			_player.transform.position = _playerPosition;
+		}
+	
+		private void DebugLines()
+		{
+			Debug.DrawLine(_zero, _playerPosition, Color.cyan);
+			Debug.DrawLine(_zero, _playerPosition.normalized, Color.magenta);
 		}
 	}
 }

@@ -4,37 +4,41 @@ using Vectors.CustomProperty.Attribute;
 namespace Vectors._2D
 {
 	[ExecuteInEditMode]
-	public class _2D_10_Angle : MonoBehaviour {
-		
+	public class _2D_10_Angle : MonoBehaviour 
+	{
 		private GameObject _player;
-		private Vector2 _playerPosition;
 		
 		[Header("Player")] 
-		[_CA_Color(_Color.Red, order = 0)]
-		[_CA_Range("X", -10, 10, order = 1)]
+		[_CA_ReadOnlyLabel("Position")]
 		[SerializeField]
-		private float _playerX;
+		private Vector2 _playerPosition;
 		
 		[_CA_Color(_Color.Green, order = 0)]
-		[_CA_Range("Y", -10, 10, order = 1)]
+		[_CA_Range("Degrees", 0, 359, order = 1)]
 		[SerializeField]
-		private float _playerY;
+		private int _playerDegrees;
+		
+		[_CA_Range("*", 1, 10)]
+		[SerializeField]
+		private int _playerK;
 		
 		// -----
 		
 		private GameObject _enemy;
+		
+		[Header("Enemy")] 
+		[_CA_ReadOnlyLabel("Position")]
+		[SerializeField]
 		private Vector2 _enemyPosition;
 		
-		[Header("Enemy")]
 		[_CA_Color(_Color.Red, order = 0)]
-		[_CA_Range("X", -10, 10, order = 1)]
+		[_CA_Range("Degrees", 0, 359, order = 1)]
 		[SerializeField]
-		private float _enemyX;
+		private int _enemyDegrees;
 		
-		[_CA_Color(_Color.Green, order = 0)]
-		[_CA_Range("Y", -10, 10, order = 1)]
+		[_CA_Range("*", 1, 10)]
 		[SerializeField]
-		private float _enemyY;
+		private int _enemyK;
 		
 		private readonly Vector2 _zero = Vector2.zero;
 		
@@ -55,6 +59,9 @@ namespace Vectors._2D
 		{
 			_player = GameObject.FindWithTag(Constant.PLAYER_2D);
 			_enemy = GameObject.FindWithTag(Constant.ENEMY_2D);
+
+			_playerK = 1;
+			_enemyK = 1;
 		}
 	
 		// Use this for initialization
@@ -66,16 +73,9 @@ namespace Vectors._2D
 		// Update is called once per frame
 		void Update()
 		{
-			UpdatePosition();
+			UpdatePlayerPosition();
+			UpdateEnemyPosition();
 			
-			if (_playerPosition.sqrMagnitude <= Mathf.Pow(MaxDistanceFromZero, 2))
-			{
-				_player.transform.position = _playerPosition;
-			}
-			if (_enemyPosition.sqrMagnitude <= Mathf.Pow(MaxDistanceFromZero, 2))
-			{
-				_enemy.transform.position = _enemyPosition;
-			}
 			/*
 			 * Q: _angle can be greater than 180 degrees. True or false?
 			 *
@@ -85,26 +85,36 @@ namespace Vectors._2D
 			 */
 			if (_signed)
 			{
-				_angle = Vector2.SignedAngle(_player.transform.position, _enemy.transform.position);
+				_angle = Vector2.SignedAngle(_playerPosition, _enemyPosition);
 			}
 			else
 			{
-				_angle = Vector2.Angle(_player.transform.position, _enemy.transform.position);
+				_angle = Vector2.Angle(_playerPosition, _enemyPosition);
 			}
-			Draw();
 		}
 		
-		private void UpdatePosition()
+		private void LateUpdate()
 		{
-			_playerPosition = new Vector2(_playerX, _playerY);
-			_enemyPosition = new Vector2(_enemyX, _enemyY);
+			DebugLines();
+		}
+		
+		private void UpdatePlayerPosition()
+		{
+			_playerPosition = new Vector2(Mathf.Cos((_playerDegrees * Mathf.PI) / 180), Mathf.Sin((_playerDegrees * Mathf.PI) / 180)) * _playerK;
+			_player.transform.position = _playerPosition;
+		}
+
+		private void UpdateEnemyPosition()
+		{
+			_enemyPosition = new Vector2(Mathf.Cos((_enemyDegrees * Mathf.PI) / 180), Mathf.Sin((_enemyDegrees * Mathf.PI) / 180)) * _enemyK;
+			_enemy.transform.position = _enemyPosition;
 		}
 	
-		private void Draw()
+		private void DebugLines()
 		{
-			Debug.DrawLine(_zero, _player.transform.position, Color.green);
-			Debug.DrawLine(_zero, _enemy.transform.position, Color.red);
-			Debug.DrawLine(_player.transform.position.normalized, _enemy.transform.position.normalized, Color.cyan);
+			Debug.DrawLine(_zero, _playerPosition, Color.green);
+			Debug.DrawLine(_zero, _enemyPosition, Color.red);
+			Debug.DrawLine(_playerPosition.normalized, _enemyPosition.normalized, Color.cyan);
 		}
 	}
 }

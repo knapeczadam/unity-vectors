@@ -7,9 +7,9 @@ namespace Vectors._2D
 	public class _2D_16_Reflect : MonoBehaviour 
 	{
 		private GameObject _player;
+		private Vector2 _playerPosition;
 		
 		[Header("Player")]
-		
 		[_CA_Color(_Color.Red, order = 0)]
 		[_CA_Range("X", -50, 50, order = 1)]
 		[SerializeField]
@@ -19,6 +19,8 @@ namespace Vectors._2D
 		[_CA_Range("Y", -50, 50, order = 1)]
 		[SerializeField]
 		private float _playerY;
+		
+		// -----
 		
 		[Space]
 		
@@ -38,6 +40,8 @@ namespace Vectors._2D
 		
 		private GameObject _enemy;
 		
+		private readonly Vector2 _zero = Vector2.zero;
+		
 		private void OnEnable()
 		{
 			_player = GameObject.FindWithTag(Constant.PLAYER_2D);
@@ -53,25 +57,28 @@ namespace Vectors._2D
 		// Update is called once per frame
 		void Update ()
 		{
-			UpdatePosition();
+			UpdatePlayerPosition();
 			
 			_inNormal = _player.transform.position;
 			_inDirection = new Vector2(Mathf.Cos((_degrees * Mathf.PI) / 180), Mathf.Sin((_degrees * Mathf.PI) / 180));
 			
 			_enemy.transform.position = Vector2.Reflect(_inNormal, _inDirection);
-
-			Draw();
+		}
+		
+		private void LateUpdate()
+		{
+			DebugLines();
 		}
 
-		private void UpdatePosition()
+		private void UpdatePlayerPosition()
 		{
-			_player.transform.position = new Vector2(_playerX, _playerY);
-			
+			_playerPosition = new Vector2(_playerX, _playerY);
+			_player.transform.position = _playerPosition;
 		}
 
-		private void Draw()
+		private void DebugLines()
 		{
-			Debug.DrawLine(Vector2.zero, _inDirection, Color.cyan);
+			Debug.DrawLine(_zero, _inDirection, Color.cyan);
 			Vector2 plane = new Vector2(_inDirection.y, -_inDirection.x);
 			Debug.DrawLine(-plane * _k, plane * _k, Color.white);
 		}

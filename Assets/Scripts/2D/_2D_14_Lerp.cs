@@ -7,6 +7,7 @@ namespace Vectors._2D
 	public class _2D_14_Lerp : MonoBehaviour 
 	{
 		private GameObject _player;
+		private Vector2 _playerPosition;
 		
 		[Header("Player")]
 		[_CA_Color(_Color.Red, order = 0)]
@@ -19,7 +20,10 @@ namespace Vectors._2D
 		[SerializeField]
 		private float _playerY;
 		
+		// -----
+		
 		private GameObject _enemy;
+		private Vector2 _enemyPosition;
 		
 		[Header("Enemy")]
 		[_CA_Color(_Color.Red, order = 0)]
@@ -32,29 +36,31 @@ namespace Vectors._2D
 		[SerializeField]
 		private float _enemyY;
 		
+		// -----
+		
 		[Space]
 		
 		/*
 		 * Q: Does it make sense to increase the range of _clampedTransition?
 		 */
-		[Header("Lerp")]
+		[Header("Vector2.Lerp")]
 		[_CA_Color(_Color.White, order = 0)]
 		[_CA_Range("Transition", 0, 1, order = 1)]
 		[SerializeField]
 		private float _clampedTransition;
 		
-		[Header("LerpUnclamped")]
+		[Space]
+		
+		[_CA_Label("Vector2.LerpUnclamped")]
+		[SerializeField]
+		private bool _useUnclampedFunction;
+		
 		[_CA_Color(_Color.White, order = 0)]
 		[_CA_Range("Transition", 0, 10, order = 1)]
 		[SerializeField]
 		private float _unclampedTransition;
 		
 		private GameObject _bullet;
-		
-		[Space]
-
-		[SerializeField]
-		private bool _unclamped;
 		
 		private void OnEnable()
 		{
@@ -74,14 +80,15 @@ namespace Vectors._2D
 		// Update is called once per frame
 		void Update ()
 		{
-			UpdatePositions();
+			UpdatePlayerPosition();
+			UpdateEnemyPosition();
 
 			/*
 			 * Q: Lerp means Linear Internationalization. True or false?
 			 * 
 			 * Q: What does Mathf.Clamp01 do? 
 			 */
-			if (_unclamped)
+			if (_useUnclampedFunction)
 			{
 				_bullet.transform.position = Vector2.LerpUnclamped(_player.transform.position, _enemy.transform.position, _unclampedTransition);
 			}
@@ -93,10 +100,16 @@ namespace Vectors._2D
 			DrawingHelper.DrawPoint(_bullet.transform.position, Color.white);
 		}
 
-		private void UpdatePositions()
+		private void UpdatePlayerPosition()
 		{
-			_player.transform.position = new Vector2(_playerX, _playerY);
-			_enemy.transform.position = new Vector2(_enemyX, _enemyY);
+			_playerPosition = new Vector2(_playerX, _playerY);
+			_player.transform.position = _playerPosition;
+		}
+
+		private void UpdateEnemyPosition()
+		{
+			_enemyPosition = new Vector2(_enemyX, _enemyY);
+			_enemy.transform.position = _enemyPosition;
 		}
 	}
 }

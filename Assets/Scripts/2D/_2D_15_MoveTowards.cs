@@ -7,6 +7,7 @@ namespace Vectors._2D
 	public class _2D_15_MoveTowards : MonoBehaviour 
 	{
 		private GameObject _player;
+		private Vector2 _playerPosition;
 		
 		[Header("Player")]
 		[_CA_Color(_Color.Red, order = 0)]
@@ -19,7 +20,10 @@ namespace Vectors._2D
 		[SerializeField]
 		private float _playerY;
 		
+		// -----
+		
 		private GameObject _enemy;
+		private Vector2 _enemyPosition;
 		
 		[Header("Enemy")]
 		[_CA_Color(_Color.Red, order = 0)]
@@ -31,6 +35,8 @@ namespace Vectors._2D
 		[_CA_Range("Y", -50, 50, order = 1)]
 		[SerializeField]
 		private float _enemyY;
+		
+		// -----
 		
 		[Space]
 		
@@ -57,7 +63,8 @@ namespace Vectors._2D
 		// Update is called once per frame
 		void Update ()
 		{
-			UpdatePositions();
+			UpdatePlayerPosition();
+			UpdateEnemyPosition();
 			
 			/*
 			 * Q: Difference between Vector2.Lerp and Vector2.MoveTowards?
@@ -77,10 +84,16 @@ namespace Vectors._2D
 			return current + vector2 * magnitude / maxDistanceDelta;
 		}
 		
-		private void UpdatePositions()
+		private void UpdatePlayerPosition()
 		{
-			_player.transform.position = new Vector2(_playerX, _playerY);
-			_enemy.transform.position = new Vector2(_enemyX, _enemyY);
+			_playerPosition = new Vector2(_playerX, _playerY);
+			_player.transform.position = _playerPosition;
+		}
+
+		private void UpdateEnemyPosition()
+		{
+			_enemyPosition = new Vector2(_enemyX, _enemyY);
+			_enemy.transform.position = _enemyPosition;
 		}
 	}
 }

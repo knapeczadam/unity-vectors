@@ -4,9 +4,10 @@ using Vectors.CustomProperty.Attribute;
 namespace Vectors._2D
 {
 	[ExecuteInEditMode]
-	public class _2D_06_Addition : MonoBehaviour {
-		
+	public class _2D_06_Addition : MonoBehaviour 
+	{
 		private GameObject _player;
+		private Vector2 _playerPosition;
 		
 		[Header("Player")]
 		[_CA_ReadOnlyLabel("X")]
@@ -16,6 +17,8 @@ namespace Vectors._2D
 		[_CA_ReadOnlyLabel("Y")]
 		[SerializeField]
 		private float _playerY;
+		
+		// -----
 
 		private Vector2 _lightSide;
 	
@@ -61,7 +64,6 @@ namespace Vectors._2D
 		// Update is called once per frame
 		void Update () 
 		{
-			
 			_lightSide = new Vector2(_lightX, _lightY);
 			_darkSide = new Vector2(_darkX, _darkY);
 			
@@ -70,9 +72,12 @@ namespace Vectors._2D
 			 */
 			Add();
 			
-			_player.transform.position = new Vector2(_playerX,_playerY);
-			
-			Draw();
+			UpdatePlayerPosition();
+		}
+		
+		private void LateUpdate()
+		{
+			DebugLines();
 		}
 	
 		private void Add()
@@ -90,16 +95,22 @@ namespace Vectors._2D
 			_playerY = (_lightSide + _darkSide).y;
 		}
 		
-		private void Draw()
+		private void UpdatePlayerPosition()
+		{
+			_playerPosition = new Vector2(_playerX, _playerY);
+			_player.transform.position = _playerPosition;
+		}
+		
+		private void DebugLines()
 		{
 			/*
 			 * Q: Difference between Debug.DrawLine and Debug.DrawRay?
 			 */
 			Debug.DrawLine(_zero, new Vector2(_lightX, _lightY), Color.green);
-			Debug.DrawLine(new Vector2(_lightX, _lightY), new Vector2(_playerX, _playerY), Color.red);
+			Debug.DrawLine(new Vector2(_lightX, _lightY), _playerPosition, Color.red);
 			Debug.DrawLine(_zero, new Vector2(_darkX, _darkY), Color.red);
-			Debug.DrawLine(new Vector2(_darkX, _darkY), new Vector2(_playerX, _playerY), Color.green);
-			Debug.DrawLine(_zero, new Vector2(_playerX, _playerY), Color.cyan);
+			Debug.DrawLine(new Vector2(_darkX, _darkY), _playerPosition, Color.green);
+			Debug.DrawLine(_zero, _playerPosition, Color.cyan);
 		}
 	}
 }

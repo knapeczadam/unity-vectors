@@ -9,7 +9,6 @@ namespace Vectors._2D
         private Vector2 _playerPosition;
 		
         [Header("Player")]
-		
         [_CA_Color(_Color.Red, order = 0)]
         [_CA_Range("X", -50, 50, order = 1)]
         [SerializeField]
@@ -52,7 +51,7 @@ namespace Vectors._2D
         // Update is called once per frame
         void Update()
         {
-            UpdatePosition();
+            UpdatePlayerPosition();
         }
         
         /*
@@ -96,7 +95,7 @@ namespace Vectors._2D
             return vector2_4;
         }
         
-        private void UpdatePosition()
+        private void UpdatePlayerPosition()
         {
             _playerPosition = new Vector2(_playerX, _playerY);
             _player.transform.position = _playerPosition;

@@ -95,9 +95,13 @@ namespace Vectors._2D
             UpdateWrappers();
             SetCurrent();
             _direction = UpdateDirection();
-            Draw();
         }
-    
+
+        private void LateUpdate()
+        {
+            DebugLines();
+        }
+
         private void InitWrappers()
         {
             _zero = new BoolWrapper(false);
@@ -202,7 +206,7 @@ namespace Vectors._2D
             return dir;
         }
     
-        private void Draw()
+        private void DebugLines()
         {
             Debug.DrawLine(Vector2.zero, _direction, Color.cyan);
         }

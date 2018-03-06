@@ -3,7 +3,8 @@ using Vectors.CustomProperty.Attribute;
 
 namespace Vectors._2D
 {
-	public class _2D_13_Velocity : MonoBehaviour {
+	public class _2D_13_Velocity : MonoBehaviour 
+	{
 		
 		private GameObject _player;
 		private Rigidbody2D _rigidbody;
@@ -45,6 +46,8 @@ namespace Vectors._2D
 		private float _maxSpeed;
 		
 		private float _timer;
+		
+		private readonly Vector2 _zero = Vector2.zero;
 	
 		// Use this for initialization
 		void Start () 
@@ -77,8 +80,11 @@ namespace Vectors._2D
 			UpdateVelocityV1();
 			
 			_playerPosition = _player.transform.position;
-	
-			Draw();
+		}
+		
+		private void LateUpdate()
+		{
+			DebugLines();
 		}
 		
 		private void UpdateVelocityV1()
@@ -105,9 +111,9 @@ namespace Vectors._2D
 			}
 		}
 	
-		private void Draw()
+		private void DebugLines()
 		{
-			Debug.DrawLine(Vector3.zero, _velocity, Color.cyan);
+			Debug.DrawLine(_zero, _velocity, Color.cyan);
 		}
 		
 		// https://answers.unity.com/questions/45676/making-a-timer-0000-minutes-and-seconds.html

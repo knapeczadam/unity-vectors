@@ -21,7 +21,6 @@ namespace Vectors._2D
 		[Space]
 		
 		[Header("Player")]
-		
 		[_CA_Color(_Color.Red, order = 0)]
 		[_CA_Range("X", -50, 50, order = 1)]
 		[SerializeField]
@@ -32,8 +31,6 @@ namespace Vectors._2D
 		[_CA_Range("Y", -50, 50, order = 1)]
 		[SerializeField]
 		private float _playerY;
-
-		[Space] 
 		
 		/*
 		 * Q: What is scalar in mathematics?
@@ -49,7 +46,9 @@ namespace Vectors._2D
 		
 		[Space]
 		
-		[Header("Vector2.Scale")]
+		[_CA_Label("Vector2.Scale")]
+		[SerializeField]
+		private bool _useScaleFunction;
 		
 		[_CA_Color(_Color.Red, order = 0)]
 		[_CA_Range("X", -50, 50, order = 1)]
@@ -60,10 +59,6 @@ namespace Vectors._2D
 		[_CA_Range("Y", -50, 50, order = 1)]
 		[SerializeField]
 		private float _scaleY;
-		
-		[_CA_Label("Use")]
-		[SerializeField]
-		private bool _useScaleFunction;
 		
 		private readonly Vector2 _zero = Vector2.zero;
 
@@ -104,8 +99,11 @@ namespace Vectors._2D
 		{
 			_player.transform.position = UpdatePlayerPosition();
 			_clone.transform.position = UpdateClonePosition();
-
-			Draw();
+		}
+		
+		private void LateUpdate()
+		{
+			DebugLines();
 		}
 		
 		private Vector2 UpdatePlayerPosition()
@@ -134,7 +132,7 @@ namespace Vectors._2D
 			return _clonePosition;
 		}
 		
-		private void Draw()
+		private void DebugLines()
 		{
 			/*
 			 * Q: What is a Vector Space?
