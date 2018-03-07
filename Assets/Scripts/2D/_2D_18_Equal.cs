@@ -79,7 +79,7 @@ namespace Vectors._2D
 		     *
 		     * Q: Vector2.kEpsilon is less than 0.00001. True or false?
 		     *
-		     * Q: What is casting?
+		     * Q: What is casting in C#?
 		     *
 		     * Q: This implementation is faster: (double) (lhs - rhs).magnitude < Vector2.kEpsilon. True or false?
 		     */

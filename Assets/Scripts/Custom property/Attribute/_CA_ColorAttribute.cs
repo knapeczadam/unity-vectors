@@ -4,6 +4,9 @@ using UnityEngine;
 // // https://forum.unity.com/threads/drawing-a-field-using-multiple-property-drawers.479377/
 namespace Vectors.CustomProperty.Attribute
 {
+    /*
+     * Q: What is enum?
+     */
     public enum _Color
     {
         Black = 0,

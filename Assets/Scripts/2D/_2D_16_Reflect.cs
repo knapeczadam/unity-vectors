@@ -60,6 +60,13 @@ namespace Vectors._2D
 			UpdatePlayerPosition();
 			
 			_inNormal = _player.transform.position;
+			/*
+			 * Q: What is radian?
+			 *
+			 * Q: What is Mathf.Deg2Rad?
+			 *
+			 * Q: What's the opposite of Mathf.Deg2Rad?
+			 */
 			_inDirection = new Vector2(Mathf.Cos((_degrees * Mathf.PI) / 180), Mathf.Sin((_degrees * Mathf.PI) / 180));
 			
 			_enemy.transform.position = Vector2.Reflect(_inNormal, _inDirection);

@@ -49,8 +49,6 @@ namespace Vectors._2D
              *
              * Q: How can you calculate the position of an accelerating body after a certain time?
              *
-             * Q: What is enum?
-             *
              * Q: Default value of AddForce's mode is ForceMode2D.Impulse. True or false?
              *
              * Q: ForceMode2D.Force is a constant. True or false?

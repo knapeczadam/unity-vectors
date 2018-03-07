@@ -67,6 +67,11 @@ namespace Vectors._2D
 			UpdatePlayerPosition();
 			UpdateEnemyPosition();
 
+			/*
+			 * Q: Is position a vector?
+			 *
+			 * Q: What's the meaning of motion is relative?
+			 */
 			_relativeToOrigin = _playerPosition;
 			_relativeToEnemy = _playerPosition - _enemyPosition;
 		}
