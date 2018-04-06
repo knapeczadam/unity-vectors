@@ -54,27 +54,35 @@ namespace Vectors._2D
             _enemy.transform.position = SmoothDamp(_enemy.transform.position, _playerPosition, ref _currentVelocity, _smoothTime, _maxSpeed);
         }
         
-        private static Vector2 SmoothDamp(Vector2 current, Vector2 target, ref Vector2 currentVelocity, float smoothTime, float maxSpeed = Mathf.Infinity)
+        private Vector2 SmoothDamp(Vector2 current, Vector2 target, ref Vector2 currentVelocity, float smoothTime, float maxSpeed = Mathf.Infinity)
         {
+            // Based on Game Programming Gems 4 Chapter 1.10
             float deltaTime = Time.deltaTime;
-            smoothTime = Mathf.Max(0.0001f, smoothTime);
-            float num1 = 2f / smoothTime;
-            float num2 = num1 * deltaTime;
-            float num3 = (float) (1.0 / (1.0 + (double) num2 + 0.479999989271164 * (double) num2 * (double) num2 + 0.234999999403954 * (double) num2 * (double) num2 * (double) num2));
-            Vector2 vector = current - target;
-            Vector2 vector2_1 = target;
-            float maxLength = maxSpeed * smoothTime;
-            Vector2 vector2_2 = Vector2.ClampMagnitude(vector, maxLength);
-            target = current - vector2_2;
-            Vector2 vector2_3 = (currentVelocity + num1 * vector2_2) * deltaTime;
-            currentVelocity = (currentVelocity - num1 * vector2_3) * num3;
-            Vector2 vector2_4 = target + (vector2_2 + vector2_3) * num3;
-            if ((double) Vector2.Dot(vector2_1 - current, vector2_4 - vector2_1) > 0.0)
+            smoothTime = Mathf.Max(0.0001F, smoothTime);
+            float omega = 2F / smoothTime;
+
+            float x = omega * deltaTime;
+            float exp = 1F / (1F + x + 0.48F * x * x + 0.235F * x * x * x);
+            Vector2 change = current - target;
+            Vector2 originalTo = target;
+
+            // Clamp maximum speed
+            float maxChange = maxSpeed * smoothTime;
+            change = Vector2.ClampMagnitude(change, maxChange);
+            target = current - change;
+
+            Vector2 temp = (currentVelocity + omega * change) * deltaTime;
+            currentVelocity = (currentVelocity - omega * temp) * exp;
+            Vector2 output = target + (change + temp) * exp;
+
+            // Prevent overshooting
+            if (Vector2.Dot(originalTo - current, output - originalTo) > 0)
             {
-                vector2_4 = vector2_1;
-                currentVelocity = (vector2_4 - vector2_1) / deltaTime;
+                output = originalTo;
+                currentVelocity = (output - originalTo) / deltaTime;
             }
-            return vector2_4;
+
+            return output;
         }
     }
 }

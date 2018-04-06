@@ -58,11 +58,11 @@ namespace Vectors._2D
 		 */
 		private Vector2 MoveTowards(Vector2 current, Vector2 target, float maxDistanceDelta)
 		{
-			Vector2 vector2 = current - target;
-			float magnitude = vector2.magnitude;
-			if ((double) magnitude >= (double) maxDistanceDelta || (double) magnitude == 0.0)
+			Vector2 toVector = current - target;
+			float dist = toVector.magnitude;
+			if (dist >= maxDistanceDelta || dist == 0)
 				return target;
-			return current + vector2 * magnitude / maxDistanceDelta;
+			return current + toVector * dist / maxDistanceDelta;
 		}
 	}
 }

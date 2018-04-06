@@ -3,7 +3,7 @@ using Vectors.CustomProperty.Attribute;
 
 namespace Vectors._3D
 {
-    public class _3D_Base : MonoBehaviour
+    public abstract class _3D_Base : MonoBehaviour
     {
         [SerializeField]
         protected bool _debugLines = true;
