@@ -4,15 +4,9 @@ using Vectors.CustomProperty.Attribute;
 
 namespace Vectors._2D
 {
-    public class _2D_12_Acceleration : MonoBehaviour
+    public class _2D_12_Acceleration : _2D_Base
     {
-        private GameObject _player;
         private Rigidbody2D _rigidbody;
-    
-        [Header("Player")] 
-        [_CA_ReadOnlyLabel("Position")]
-        [SerializeField]
-        private Vector2 _playerPosition;
     
         [_CA_ReadOnly]
         [SerializeField]
@@ -57,10 +51,12 @@ namespace Vectors._2D
              */
             _rigidbody.AddForce(_acceleration);
             _velocity = _rigidbody.velocity;
-    
-            _playerPosition = _player.transform.position;
             
-            if (_counter <= 40 && _playerPosition.x >= _counter)
+            _playerPosition = _player.transform.position;
+            _playerX = _player.transform.position.x;
+            _playerY = _player.transform.position.y;
+            
+            if (_counter <= 40 && _playerX >= _counter)
             {
                 DoBeep();
                 ++_counter;

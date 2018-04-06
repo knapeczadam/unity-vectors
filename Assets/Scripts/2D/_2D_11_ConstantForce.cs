@@ -3,15 +3,8 @@ using Vectors.CustomProperty.Attribute;
 
 namespace Vectors._2D
 {
-	public class _2D_11_ConstantForce : MonoBehaviour 
+	public class _2D_11_ConstantForce : _2D_Base 
 	{
-		private GameObject _player;
-		
-		[Header("Player")] 
-		[_CA_ReadOnlyLabel("Position")]
-		[SerializeField]
-		private Vector2 _playerPosition;
-
 		private ConstantForce2D _constantForce;
 		
 		[_CA_ReadOnly]
@@ -20,8 +13,6 @@ namespace Vectors._2D
 		
 		private int _counter = 1;
 		private float _timer;
-		
-		private readonly Vector2 _zero =  Vector2.zero;
 		
 		// Use this for initialization
 		void Start () 
@@ -45,16 +36,13 @@ namespace Vectors._2D
 		{
 			_timer += Time.deltaTime;
 			
-			_playerPosition = _player.transform.position;
+			_playerX = _player.transform.position.x;
+			_playerY = _player.transform.position.y;
+			
 			_force = _constantForce.force;
 		}
-		
-		private void LateUpdate()
-		{
-			DebugLines();
-		}
 
-		private void DebugLines()
+		protected override void DebugLines()
 		{
 			Debug.DrawLine(_zero, _force, Color.cyan);
 		}

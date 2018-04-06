@@ -4,43 +4,36 @@ using Vectors.CustomProperty.Attribute;
 namespace Vectors._2D
 {
 	[ExecuteInEditMode]
-	public class _2D_10_Angle : MonoBehaviour 
+	public class _2D_10_Angle : _2D_Base 
 	{
-		private GameObject _player;
+		[Space]
 		
-		[Header("Player")] 
-		[_CA_ReadOnlyLabel("Position")]
-		[SerializeField]
-		private Vector2 _playerPosition;
-		
-		[_CA_Color(_Color.Green, order = 0)]
+		[_CA_Color(_Color.Cyan, order = 0)]
 		[_CA_Range("Degrees", 0, 359, order = 1)]
 		[SerializeField]
 		private int _playerDegrees;
 		
-		[_CA_Range("*", 1, 10)]
+		[_CA_Color(_Color.Magenta, order = 0)]
+		[_CA_Range("*", 1, 10, order = 1)]
 		[SerializeField]
 		private int _playerK;
 		
 		// -----
 		
-		private GameObject _enemy;
-		
 		[Header("Enemy")] 
 		[_CA_ReadOnlyLabel("Position")]
 		[SerializeField]
-		private Vector2 _enemyPosition;
+		private new Vector2 _enemyPosition;
 		
-		[_CA_Color(_Color.Red, order = 0)]
+		[_CA_Color(_Color.Cyan, order = 0)]
 		[_CA_Range("Degrees", 0, 359, order = 1)]
 		[SerializeField]
 		private int _enemyDegrees;
 		
-		[_CA_Range("*", 1, 10)]
+		[_CA_Color(_Color.Magenta, order = 0)]
+		[_CA_Range("*", 1, 10, order = 1)]
 		[SerializeField]
 		private int _enemyK;
-		
-		private readonly Vector2 _zero = Vector2.zero;
 		
 		[Space]
 		
@@ -93,14 +86,11 @@ namespace Vectors._2D
 			}
 		}
 		
-		private void LateUpdate()
-		{
-			DebugLines();
-		}
-		
-		private void UpdatePlayerPosition()
+		protected override void UpdatePlayerPosition()
 		{
 			_playerPosition = new Vector2(Mathf.Cos((_playerDegrees * Mathf.PI) / 180), Mathf.Sin((_playerDegrees * Mathf.PI) / 180)) * _playerK;
+			_playerX = _playerPosition.x;
+			_playerY = _playerPosition.y;
 			_player.transform.position = _playerPosition;
 		}
 
@@ -110,7 +100,7 @@ namespace Vectors._2D
 			_enemy.transform.position = _enemyPosition;
 		}
 	
-		private void DebugLines()
+		protected override void DebugLines()
 		{
 			Debug.DrawLine(_zero, _playerPosition, Color.green);
 			Debug.DrawLine(_zero, _enemyPosition, Color.red);

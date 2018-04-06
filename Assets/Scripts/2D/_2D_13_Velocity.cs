@@ -3,16 +3,9 @@ using Vectors.CustomProperty.Attribute;
 
 namespace Vectors._2D
 {
-	public class _2D_13_Velocity : MonoBehaviour 
+	public class _2D_13_Velocity : _2D_Base
 	{
-		
-		private GameObject _player;
 		private Rigidbody2D _rigidbody;
-	
-		[Header("Player")] 
-		[_CA_ReadOnlyLabel("Position")]
-		[SerializeField]
-		private Vector2 _playerPosition;
 		
 		[Header("Velocity")]
 		[_CA_Color(_Color.Red, order = 0)]
@@ -46,8 +39,6 @@ namespace Vectors._2D
 		private float _maxSpeed;
 		
 		private float _timer;
-		
-		private readonly Vector2 _zero = Vector2.zero;
 	
 		// Use this for initialization
 		void Start () 
@@ -79,12 +70,8 @@ namespace Vectors._2D
 			 */
 			UpdateVelocityV1();
 			
-			_playerPosition = _player.transform.position;
-		}
-		
-		private void LateUpdate()
-		{
-			DebugLines();
+			_playerX = _player.transform.position.x;
+			_playerY = _player.transform.position.y;
 		}
 		
 		private void UpdateVelocityV1()
@@ -111,7 +98,7 @@ namespace Vectors._2D
 			}
 		}
 	
-		private void DebugLines()
+		protected override void DebugLines()
 		{
 			Debug.DrawLine(_zero, _velocity, Color.cyan);
 		}

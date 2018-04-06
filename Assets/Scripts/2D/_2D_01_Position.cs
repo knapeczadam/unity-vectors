@@ -4,8 +4,12 @@ using Vectors.CustomProperty.Attribute;
 namespace Vectors._2D
 {
 	[ExecuteInEditMode]
-	public class _2D_01_Position : MonoBehaviour
+	public class _2D_01_Position : _2D_Base
 	{
+		[_CA_ReadOnly]
+		[SerializeField]
+		private Vector2 _globalPosition;
+		
 		private GameObject _parent;
 		
 		[Header("Parent")]
@@ -19,22 +23,6 @@ namespace Vectors._2D
 		[SerializeField]
 		private float _parentY;
 
-		// -----
-		
-		private GameObject _player;
-		private Vector2 _playerPosition;
-		
-		[Header("Player")]
-		[_CA_Color(_Color.Red, order = 0)]
-		[_CA_Range("X", -50, 50, order = 1)]
-		[SerializeField]
-		private float _playerX;
-	
-		[_CA_Color(_Color.Green, order = 0)]
-		[_CA_Range("Y", -50, 50, order = 1)]
-		[SerializeField]
-		private float _playerY;
-
 		[Space] 
 		
 		[SerializeField]
@@ -47,8 +35,6 @@ namespace Vectors._2D
 		 * Poor enemy can't move. Can you help him to control his movement?  
 		 * 
 		 */
-	
-		private readonly Vector2 _zero = Vector2.zero;
 	
 		private void OnEnable()
 		{
@@ -82,16 +68,12 @@ namespace Vectors._2D
 			{
 				_player.transform.position = UpdatePlayerPositionV2();
 			}
-
+			_globalPosition = _player.transform.position;
+			
 			UpdateParentPosition();
 		}
-		
-		private void LateUpdate()
-		{
-			DebugLines();
-		}
 	
-		private void DebugLines()
+		protected override void DebugLines()
 		{
 			if (_local)
 			{

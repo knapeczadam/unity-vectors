@@ -4,27 +4,8 @@ using Vectors.CustomProperty.Attribute;
 namespace Vectors._2D
 {
 	[ExecuteInEditMode]
-	public class _2D_14_Lerp : MonoBehaviour 
+	public class _2D_14_Lerp : _2D_Base 
 	{
-		private GameObject _player;
-		private Vector2 _playerPosition;
-		
-		[Header("Player")]
-		[_CA_Color(_Color.Red, order = 0)]
-		[_CA_Range("X", -50, 50, order = 1)]
-		[SerializeField]
-		private float _playerX;
-		
-		[_CA_Color(_Color.Green, order = 0)]
-		[_CA_Range("Y", -50, 50, order = 1)]
-		[SerializeField]
-		private float _playerY;
-		
-		// -----
-		
-		private GameObject _enemy;
-		private Vector2 _enemyPosition;
-		
 		[Header("Enemy")]
 		[_CA_Color(_Color.Red, order = 0)]
 		[_CA_Range("X", -50, 50, order = 1)]
@@ -70,8 +51,10 @@ namespace Vectors._2D
 		}
 
 		// Use this for initialization
-		void Start () 
+		void Start ()
 		{
+			_debugLines = false;
+
 			// https://www.geogebra.org/m/sCyREjum
 			// http://www.blueraja.com/blog/404/how-to-use-unity-3ds-linear-interpolation-vector3-lerp-correctly
 			// http://theantranch.com/blog/using-lerp-properly/
@@ -81,7 +64,7 @@ namespace Vectors._2D
 		void Update ()
 		{
 			UpdatePlayerPosition();
-			UpdateEnemyPosition();
+			UpdateEnemyPosition(_enemyX, _enemyY);
 
 			/*
 			 * Q: Lerp means Linear Internationalization. True or false?
@@ -98,18 +81,6 @@ namespace Vectors._2D
 			}
 			
 			DrawingHelper.DrawPoint(_bullet.transform.position, Color.white);
-		}
-
-		private void UpdatePlayerPosition()
-		{
-			_playerPosition = new Vector2(_playerX, _playerY);
-			_player.transform.position = _playerPosition;
-		}
-
-		private void UpdateEnemyPosition()
-		{
-			_enemyPosition = new Vector2(_enemyX, _enemyY);
-			_enemy.transform.position = _enemyPosition;
 		}
 	}
 }

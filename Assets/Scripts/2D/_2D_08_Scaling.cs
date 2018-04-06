@@ -4,33 +4,15 @@ using Vectors.CustomProperty.Attribute;
 namespace Vectors._2D
 {
 	[ExecuteInEditMode]
-	public class _2D_08_Scaling : MonoBehaviour 
+	public class _2D_08_Scaling : _2D_Base 
 	{
-		private GameObject _player;
-		
-		[_CA_ReadOnly]
-		[SerializeField]
-		private Vector2 _playerPosition;
-		
 		private GameObject _clone;
-
-		[_CA_ReadOnly]
-		[SerializeField]
-		private Vector2 _clonePosition;
 		
 		[Space]
 		
-		[Header("Player")]
-		[_CA_Color(_Color.Red, order = 0)]
-		[_CA_Range("X", -50, 50, order = 1)]
+		[_CA_ReadOnly]
 		[SerializeField]
-		private float _playerX;
-
-
-		[_CA_Color(_Color.Green, order = 0)]
-		[_CA_Range("Y", -50, 50, order = 1)]
-		[SerializeField]
-		private float _playerY;
+		private Vector2 _clonePosition;
 		
 		/*
 		 * Q: What is scalar in mathematics?
@@ -59,8 +41,6 @@ namespace Vectors._2D
 		[_CA_Range("Y", -50, 50, order = 1)]
 		[SerializeField]
 		private float _scaleY;
-		
-		private readonly Vector2 _zero = Vector2.zero;
 
 		private void OnEnable()
 		{
@@ -97,23 +77,11 @@ namespace Vectors._2D
 		// Update is called once per frame
 		void Update () 
 		{
-			_player.transform.position = UpdatePlayerPosition();
-			_clone.transform.position = UpdateClonePosition();
-		}
-		
-		private void LateUpdate()
-		{
-			DebugLines();
-		}
-		
-		private Vector2 UpdatePlayerPosition()
-		{
-			_playerPosition = new Vector2(_playerX, _playerY);
-	
-			return _playerPosition;
+			UpdatePlayerPosition();
+			UpdateClonePosition();
 		}
 
-		private Vector2 UpdateClonePosition()
+		private void UpdateClonePosition()
 		{
 			/*
 			 * Q: What is scalar multiplication?
@@ -129,10 +97,10 @@ namespace Vectors._2D
 				_clonePosition = new Vector2(_playerX, _playerY) * _k;
 			}
 
-			return _clonePosition;
+			_clone.transform.position = _clonePosition;
 		}
 		
-		private void DebugLines()
+		protected override void DebugLines()
 		{
 			/*
 			 * Q: What is a Vector Space?

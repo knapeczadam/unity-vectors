@@ -4,27 +4,8 @@ using Vectors.CustomProperty.Attribute;
 namespace Vectors._2D
 {
 	[ExecuteInEditMode]
-	public class _2D_15_MoveTowards : MonoBehaviour 
+	public class _2D_15_MoveTowards : _2D_Base 
 	{
-		private GameObject _player;
-		private Vector2 _playerPosition;
-		
-		[Header("Player")]
-		[_CA_Color(_Color.Red, order = 0)]
-		[_CA_Range("X", -50, 50, order = 1)]
-		[SerializeField]
-		private float _playerX;
-		
-		[_CA_Color(_Color.Green, order = 0)]
-		[_CA_Range("Y", -50, 50, order = 1)]
-		[SerializeField]
-		private float _playerY;
-		
-		// -----
-		
-		private GameObject _enemy;
-		private Vector2 _enemyPosition;
-		
 		[Header("Enemy")]
 		[_CA_Color(_Color.Red, order = 0)]
 		[_CA_Range("X", -50, 50, order = 1)]
@@ -57,14 +38,14 @@ namespace Vectors._2D
 		// Use this for initialization
 		void Start () 
 		{
-			
+			_debugLines = false;
 		}
 		
 		// Update is called once per frame
 		void Update ()
 		{
 			UpdatePlayerPosition();
-			UpdateEnemyPosition();
+			UpdateEnemyPosition(_enemyX, _enemyY);
 			
 			/*
 			 * Q: Difference between Vector2.Lerp and Vector2.MoveTowards?
@@ -82,18 +63,6 @@ namespace Vectors._2D
 			if ((double) magnitude >= (double) maxDistanceDelta || (double) magnitude == 0.0)
 				return target;
 			return current + vector2 * magnitude / maxDistanceDelta;
-		}
-		
-		private void UpdatePlayerPosition()
-		{
-			_playerPosition = new Vector2(_playerX, _playerY);
-			_player.transform.position = _playerPosition;
-		}
-
-		private void UpdateEnemyPosition()
-		{
-			_enemyPosition = new Vector2(_enemyX, _enemyY);
-			_enemy.transform.position = _enemyPosition;
 		}
 	}
 }

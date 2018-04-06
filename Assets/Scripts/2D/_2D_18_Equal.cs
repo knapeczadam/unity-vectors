@@ -4,27 +4,8 @@ using Vectors.CustomProperty.Attribute;
 namespace Vectors._2D
 {
     [ExecuteInEditMode]
-    public class _2D_18_Equal : MonoBehaviour
+    public class _2D_18_Equal : _2D_Base
     {
-        private GameObject _player;
-        private Vector2 _playerPosition;
-		
-        [Header("Player")]
-        [_CA_Color(_Color.Red, order = 0)]
-        [_CA_Range("X", -50, 50, order = 1)]
-        [SerializeField]
-        private float _playerX;
-		
-        [_CA_Color(_Color.Green, order = 0)]
-        [_CA_Range("Y", -50, 50, order = 1)]
-        [SerializeField]
-        private float _playerY;
-        
-        // -----
-        
-        private GameObject _enemy;
-        private Vector2 _enemyPosition;
-        
         [Header("Enemy")]
         [_CA_Color(_Color.Red, order = 0)]
         [_CA_Range("X", -50, 50, order = 1)]
@@ -44,8 +25,6 @@ namespace Vectors._2D
 	    [SerializeField]
 	    private bool _equal;
 	    
-	    private readonly Vector2 _zero = Vector2.zero;
-	    
 	    private void OnEnable()
 	    {
 		    _player = GameObject.FindWithTag(Constant.PLAYER_2D);
@@ -62,15 +41,10 @@ namespace Vectors._2D
         void Update()
         {
 	        UpdatePlayerPosition();
-	        UpdateEnemyPosition();
+	        UpdateEnemyPosition(_enemyX, _enemyY);
 
 	        _equal = ApproximatelyEqual(_playerPosition, _enemyPosition);
         }
-	    
-	    private void LateUpdate()
-	    {
-		    DebugLines();
-	    }
 	    
 	    private static bool ApproximatelyEqual(Vector2 lhs, Vector2 rhs)
 	    {
@@ -86,19 +60,7 @@ namespace Vectors._2D
 		    return (double) (lhs - rhs).sqrMagnitude < Vector2.kEpsilon;
 	    }
 	    
-	    private void UpdatePlayerPosition()
-	    {
-		    _playerPosition = new Vector2(_playerX, _playerY);
-		    _player.transform.position = _playerPosition;
-	    }
-
-	    private void UpdateEnemyPosition()
-	    {
-		    _enemyPosition = new Vector2(_enemyX, _enemyY);
-		    _enemy.transform.position = _enemyPosition;
-	    }
-	    
-	    private void DebugLines()
+	    protected override void DebugLines()
 	    {
 		    Debug.DrawLine(_zero, _playerPosition, Color.green);
 		    Debug.DrawLine(_zero, _enemyPosition, Color.red);

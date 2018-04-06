@@ -4,24 +4,8 @@ using Vectors.CustomProperty.Attribute;
 namespace Vectors._2D
 {
 	[ExecuteInEditMode]
-	public class _2D_05_Normalization : MonoBehaviour 
+	public class _2D_05_Normalization : _2D_Base 
 	{
-		private GameObject _player;
-		private Vector2 _playerPosition;
-		
-		[Header("Player")]
-		[_CA_Color(_Color.Red, order = 0)]
-		[_CA_Range("X", -50, 50, order = 1)]
-		[SerializeField]
-		private float _playerX;
-		
-		[_CA_Color(_Color.Green, order = 0)]
-		[_CA_Range("Y", -50, 50, order = 1)]
-		[SerializeField]
-		private float _playerY;
-		
-		// -----
-	
 		[Header("Normalized")]
 		[_CA_ReadOnlyLabel("X")]
 		[SerializeField]
@@ -34,8 +18,6 @@ namespace Vectors._2D
 		[_CA_ReadOnlyLabel("Magnitude")]
 		[SerializeField]
 		private float _normalizedMagnitude;
-	
-		private readonly Vector2 _zero = Vector2.zero;
 	
 		private void OnEnable()
 		{
@@ -69,11 +51,6 @@ namespace Vectors._2D
 			 */
 			_normalizedMagnitude = new Vector2(_normalizedX, _normalizedY).magnitude;
 		}
-		
-		private void LateUpdate()
-		{
-			DebugLines();
-		}
 	
 		private void Normalize()
 		{
@@ -88,16 +65,10 @@ namespace Vectors._2D
 			_normalizedX = _playerX / length;
 			_normalizedY = _playerY / length;
 		}
-		
-		private void UpdatePlayerPosition()
-		{
-			_playerPosition = new Vector2(_playerX, _playerY);
-			_player.transform.position = _playerPosition;
-		}
 	
-		private void DebugLines()
+		protected override void DebugLines()
 		{
-			Debug.DrawLine(_zero, _playerPosition, Color.cyan);
+			Debug.DrawLine(_zero, _playerPosition, Color.green);
 			Debug.DrawLine(_zero, _playerPosition.normalized, Color.magenta);
 		}
 	}

@@ -3,28 +3,8 @@ using Vectors.CustomProperty.Attribute;
 
 namespace Vectors._2D
 {
-    public class _2D_19_SmoothDamp : MonoBehaviour
+    public class _2D_19_SmoothDamp : _2D_Base
     {
-        private GameObject _player;
-        private Vector2 _playerPosition;
-		
-        [Header("Player")]
-        [_CA_Color(_Color.Red, order = 0)]
-        [_CA_Range("X", -50, 50, order = 1)]
-        [SerializeField]
-        private float _playerX;
-		
-        [_CA_Color(_Color.Green, order = 0)]
-        [_CA_Range("Y", -50, 50, order = 1)]
-        [SerializeField]
-        private float _playerY;
-        
-        // -----
-        
-        private GameObject _enemy;
-        
-        // -----
-        
         [Space]        
 
         [_CA_ReadOnly]
@@ -44,6 +24,8 @@ namespace Vectors._2D
         // Use this for initialization
         void Start()
         {
+            _debugLines = false;
+            
             _player = GameObject.FindWithTag(Constant.PLAYER_2D);
             _enemy = GameObject.FindWithTag(Constant.ENEMY_2D);
         }
@@ -67,7 +49,7 @@ namespace Vectors._2D
          *
          * Q: You can use the Script Execution Order settings (menu: Edit > Preferences... > 2D > Execution Order). True or false?
          */
-        private void LateUpdate()
+        protected override void LateUpdate()
         {
             _enemy.transform.position = SmoothDamp(_enemy.transform.position, _playerPosition, ref _currentVelocity, _smoothTime, _maxSpeed);
         }
@@ -93,12 +75,6 @@ namespace Vectors._2D
                 currentVelocity = (vector2_4 - vector2_1) / deltaTime;
             }
             return vector2_4;
-        }
-        
-        private void UpdatePlayerPosition()
-        {
-            _playerPosition = new Vector2(_playerX, _playerY);
-            _player.transform.position = _playerPosition;
         }
     }
 }
