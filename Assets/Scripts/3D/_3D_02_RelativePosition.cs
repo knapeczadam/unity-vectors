@@ -13,7 +13,7 @@ namespace Vectors._3D
         private float _enemyX;
 		
         [_CA_Color(_Color.Green, order = 0)]
-        [_CA_Range("Y", -50, 50, order = 1)]
+        [_CA_Range("Y", 0, 50, order = 1)]
         [SerializeField]
         private float _enemyY;
         
