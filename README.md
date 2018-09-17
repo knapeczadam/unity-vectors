@@ -5,19 +5,7 @@
 * .NET Framework: <b>4.7.1</b>
 
 ##### Useful links
-* [Unity User Manual](https://docs.unity3d.com/Manual/index.html)
 * [Unity C# Reference](https://github.com/Unity-Technologies/UnityCsReference)
     * [Vector2](https://github.com/Unity-Technologies/UnityCsReference/blob/master/Runtime/Export/Vector2.cs)
     * [Vector3](https://github.com/Unity-Technologies/UnityCsReference/blob/master/Runtime/Export/Vector3.cs)
-* [The Nature of Code: Simulating Natural Systems with Processing](http://natureofcode.com/book/)
-* [Dark skin](https://www.youtube.com/watch?v=imWgBONPzyA) <sup>[*](https://feedback.unity3d.com/suggestions/editor-dark-skin-theme-in-free-)</sup>
- * YouTube channels
-    * [Abhinav a.k.a Demkeys](https://www.youtube.com/user/AbhiDemkeys)
-    * [Brackeys](https://www.youtube.com/user/Brackeys)
-    * [BurgZerg Arcade](https://www.youtube.com/user/BurgZergArcade)
-    * [inScope Studios](https://www.youtube.com/user/KnnthRA)
-    * [Jayanam](https://www.youtube.com/user/jayanamgames)
-    * [Jorge Rodriguez](https://www.youtube.com/user/BSVino)
-    * [N3K EN](https://www.youtube.com/channel/UCtQPCnbIB7SP_gM1Xtv8bDQ)
-    * [Physics Videos by Eugene Khutoryansky](https://www.youtube.com/user/EugeneKhutoryansky)
-    * [Sebastian Lague](https://www.youtube.com/user/Cercopithecan)
+
